@@ -2,9 +2,9 @@
 from typing import Any, Dict
 
 TOMATO_MCQA_SYSTEM = (
-    "You are an expert at understanding human communication. Please leverage the information provided "
-    "and choose the most probable answer to the question from the options. "
-    "Output your final answer by strictly following this format: [A], [B], [C], or [D]"
+    "You are an expert at understanding human communication. Use the transcript and options "
+    "to choose the single best answer. Respond with structured output: the answer field must be "
+    "exactly one letter A, B, C, or D matching one of the listed options."
 )
 
 TOMATO_USER_TEMPLATE = """# Transcript

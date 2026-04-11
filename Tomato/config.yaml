@@ -3,7 +3,7 @@
 dataset: Tomato
 path: Tomato/test
 
-# 结构化输出 schema（Tomato/run.py 当前使用 chat 生成 + 正则解析，保留 MCQAnswer 供 runner 加载）
+# 结构化输出 schema（见 Tomato/schemas.py，run.py 使用 batch_generate_structure）
 schema: MCQAnswer
 
 # 默认 prompt 方法（见 Tomato/prompts.py）

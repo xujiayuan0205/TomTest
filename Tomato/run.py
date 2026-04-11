@@ -1,4 +1,4 @@
-"""Tomato 评测脚本（chat 生成 + 选项解析）"""
+"""Tomato 评测脚本（结构化输出 MCQAnswer，与 ToMBench 推理路径一致）"""
 from __future__ import annotations
 
 import json
@@ -7,7 +7,7 @@ import random
 import re
 import sys
 from pathlib import Path
-from typing import Any, Dict, List, Match, Optional, Sequence, Tuple
+from typing import Any, Dict, List, Match, Optional, Sequence
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -19,7 +19,7 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("httpcore").setLevel(logging.WARNING)
 
 # ---------------------------------------------------------------------------
-# 以下为 MCQ 行解析（与 TomTest scoring.extract_unshuffled_mcq / extract_tomato_choice 一致）
+# 从原始样本解析 MCQ，写入 row["_mcq"]（供 build_prompt 与金标）
 # ---------------------------------------------------------------------------
 
 CHOICE_LETTERS = tuple("ABCD")
@@ -274,27 +274,6 @@ def extract_unshuffled_mcq(row: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     return None
 
 
-def extract_tomato_choice(text: str, allowed_letters: str) -> Optional[str]:
-    if not text:
-        return None
-    allowed = {c.upper() for c in allowed_letters}
-    m = re.search(r"\[\s*([A-Da-d])\s*\]", text)
-    if m and m.group(1).upper() in allowed:
-        return m.group(1).upper()
-    m = re.search(r"\[\[?\s*([A-Da-d])\s*\]?\]", text)
-    if m and m.group(1).upper() in allowed:
-        return m.group(1).upper()
-    for ch in allowed:
-        if re.search(rf"\b{ch}\b", text.upper()):
-            return ch
-    return None
-
-
-# ---------------------------------------------------------------------------
-# 数据预处理与预测提取
-# ---------------------------------------------------------------------------
-
-
 def preprocess_mcq(data: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """预处理：解析 MCQ 并将结果写入 row['_mcq']，过滤无效行。"""
     valid: List[Dict[str, Any]] = []
@@ -328,10 +307,10 @@ def shuffle_mcq_options(mcq: Dict[str, Any], seed: int) -> Dict[str, Any]:
     return {**mcq, "original_choices": new_choices, "gold_letter": new_gold}
 
 
-def extract_prediction(raw_text: str, row: Dict[str, Any]) -> str:
-    """从模型原始输出中提取预测选项字母。"""
-    allowed = "".join(sorted(row["_mcq"]["original_choices"].keys()))
-    return extract_tomato_choice(raw_text, allowed) or ""
+def _answer_from_structured(r: Any) -> str:
+    """从 batch_generate_structure 返回的 Pydantic 对象取出选项字母。"""
+    a = getattr(r, "answer", None)
+    return str(a) if a is not None else ""
 
 
 # ---------------------------------------------------------------------------
@@ -386,9 +365,9 @@ def main() -> None:
             all_prompts.append(build_prompt(template, shuffled_row))
         repeat_data.append(shuffled_rows)
 
-    # 批量推理（Tomato 使用文本生成 + 正则解析）
+    # 批量结构化推理（与 ToMBench 一致）
     print(f"Running inference ({len(all_prompts)} prompts)...")
-    results = client.batch_generate(all_prompts)
+    results = client.batch_generate_structure(all_prompts, schema)
 
     # 使用数据集的 metrics 函数计算
     n = len(data)
@@ -401,7 +380,7 @@ def main() -> None:
         end = start + n
         repeat_results = results[start:end]
         rows = repeat_data[i]
-        predictions = [extract_prediction(r, row) for r, row in zip(repeat_results, rows)]
+        predictions = [_answer_from_structured(r) for r in repeat_results]
         all_predictions.append(predictions)
 
         # 调用数据集的 metrics 函数

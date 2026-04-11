@@ -1,4 +1,4 @@
-"""Tomato 数据集的输出 schema（与 ToMBench 对齐；推理解析见 run.py）。"""
+"""Tomato 数据集的输出 schema（与 ToMBench 对齐）。"""
 from typing import Literal
 
 from pydantic import BaseModel
