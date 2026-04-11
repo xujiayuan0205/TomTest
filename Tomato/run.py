@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import logging
+import random
 import re
 import sys
 from pathlib import Path
@@ -307,6 +308,26 @@ def preprocess_mcq(data: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     return valid
 
 
+def shuffle_mcq_options(mcq: Dict[str, Any], seed: int) -> Dict[str, Any]:
+    """返回一份选项顺序被打乱的 _mcq 副本，gold_letter 同步更新。"""
+    rng = random.Random(seed)
+    letters = sorted(mcq["original_choices"].keys())
+    texts = [mcq["original_choices"][l] for l in letters]
+    old_gold_idx = letters.index(mcq["gold_letter"])
+
+    indices = list(range(len(letters)))
+    rng.shuffle(indices)
+
+    new_choices: Dict[str, str] = {}
+    new_gold = mcq["gold_letter"]
+    for new_pos, old_idx in enumerate(indices):
+        new_choices[letters[new_pos]] = texts[old_idx]
+        if old_idx == old_gold_idx:
+            new_gold = letters[new_pos]
+
+    return {**mcq, "original_choices": new_choices, "gold_letter": new_gold}
+
+
 def extract_prediction(raw_text: str, row: Dict[str, Any]) -> str:
     """从模型原始输出中提取预测选项字母。"""
     allowed = "".join(sorted(row["_mcq"]["original_choices"].keys()))
@@ -346,48 +367,62 @@ def main() -> None:
     # Tomato 特有：MCQ 预处理与过滤（将解析结果写入 row['_mcq']）
     data = preprocess_mcq(data)
 
+    repeats = experiment_config["repeats"]
     print(f"MCQ samples: {len(data)}")
     print(f"Prompt method: {prompt_method}")
-    print(f"Repeats: {experiment_config['repeats']}")
+    print(f"Repeats: {repeats} (each with different option shuffle)")
 
-    # 构建 prompts（每个 repeat 构建相同的 prompts）
-    prompts = [build_prompt(template, row) for row in data]
-    all_prompts = prompts * experiment_config["repeats"]
+    # 每个 repeat 使用不同 seed 打乱选项顺序，消除位置偏差
+    all_prompts: List[str] = []
+    repeat_data: List[List[Dict[str, Any]]] = []
+
+    for i in range(repeats):
+        shuffled_rows: List[Dict[str, Any]] = []
+        for j, row in enumerate(data):
+            shuffled_mcq = shuffle_mcq_options(row["_mcq"], seed=42 * (i + 1) + j)
+            shuffled_row = dict(row)
+            shuffled_row["_mcq"] = shuffled_mcq
+            shuffled_rows.append(shuffled_row)
+            all_prompts.append(build_prompt(template, shuffled_row))
+        repeat_data.append(shuffled_rows)
 
     # 批量推理（Tomato 使用文本生成 + 正则解析）
     print(f"Running inference ({len(all_prompts)} prompts)...")
     results = client.batch_generate(all_prompts)
 
     # 使用数据集的 metrics 函数计算
+    n = len(data)
     all_predictions: List[List[str]] = []
     all_metrics: List[Dict[str, Any]] = []
+    all_gold: List[List[str]] = []
 
-    for i in range(experiment_config["repeats"]):
-        start = i * len(data)
-        end = start + len(data)
+    for i in range(repeats):
+        start = i * n
+        end = start + n
         repeat_results = results[start:end]
-        predictions = [extract_prediction(r, row) for r, row in zip(repeat_results, data)]
+        rows = repeat_data[i]
+        predictions = [extract_prediction(r, row) for r, row in zip(repeat_results, rows)]
         all_predictions.append(predictions)
 
         # 调用数据集的 metrics 函数
-        metrics = compute_metrics(predictions, data)
+        metrics = compute_metrics(predictions, rows)
         all_metrics.append(metrics)
+        all_gold.append([row["_mcq"]["gold_letter"] for row in rows])
         print(f"Run {i+1}: Accuracy={metrics['accuracy']:.4f}, Correct={metrics['correct']}/{metrics['total']}")
 
-    # 保存结果
-    gold_answers = [row["_mcq"]["gold_letter"] for row in data]
+    # 保存结果（per-repeat gold，因为每轮 shuffle 不同）
     runner.save_common_results(
         dataset_name=dataset_config["dataset"],
         model=experiment_config["llm_config"]["model_name"],
         prompt_method=prompt_method,
         all_predictions=all_predictions,
-        gold_answers=gold_answers,
+        gold_answers=all_gold,
         all_metrics=all_metrics,
         results_path=experiment_config["results_path"],
     )
 
     # 打印统计摘要
-    runner.print_summary_stats(all_metrics, experiment_config["repeats"], len(gold_answers))
+    runner.print_summary_stats(all_metrics, repeats, n)
 
 
 if __name__ == "__main__":

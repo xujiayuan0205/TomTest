@@ -136,7 +136,7 @@ def save_common_results(
     model: str,
     prompt_method: str,
     all_predictions: List[List[str]],
-    gold_answers: List[str],
+    gold_answers,
     all_metrics: List[Dict[str, Any]],
     results_path: str = "results",
     metadata: Optional[Dict[str, Any]] = None,
@@ -148,7 +148,9 @@ def save_common_results(
         model: 模型名称
         prompt_method: prompt 方法
         all_predictions: 所有重复运行的预测结果列表 [repeat][sample]
-        gold_answers: 标准答案列表
+        gold_answers: 标准答案，支持两种格式：
+            - List[str]: 所有 repeat 共用同一组 gold（如 ToMBench）
+            - List[List[str]]: 每个 repeat 有独立 gold（如 Tomato shuffle）
         all_metrics: 所有重复运行的 metrics 列表
         results_path: 结果保存路径
         metadata: 额外元数据（如 judge_model）
@@ -162,11 +164,14 @@ def save_common_results(
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     base_name = f"{dataset_name}_{model}_{prompt_method}_{timestamp}"
 
+    per_repeat_gold = bool(gold_answers and isinstance(gold_answers[0], list))
+
     # 1. 保存 predictions 到 jsonl
     jsonl_path = results_dir / f"{base_name}.jsonl"
     with open(jsonl_path, "w", encoding="utf-8") as f:
         for repeat_idx, predictions in enumerate(all_predictions):
-            for sample_idx, (pred, gold) in enumerate(zip(predictions, gold_answers)):
+            repeat_gold = gold_answers[repeat_idx] if per_repeat_gold else gold_answers
+            for sample_idx, (pred, gold) in enumerate(zip(predictions, repeat_gold)):
                 record = {
                     "repeat": repeat_idx,
                     "sample_idx": sample_idx,
