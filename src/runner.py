@@ -5,7 +5,6 @@
 import json
 import os
 import sys
-from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union
 
@@ -140,7 +139,9 @@ def save_common_results(
     all_metrics: List[Dict[str, Any]],
     results_path: str = "results",
     metadata: Optional[Dict[str, Any]] = None,
-) -> Tuple[Path, Path]:
+    dataset_config: Optional[Dict[str, Any]] = None,
+    experiment_config: Optional[Dict[str, Any]] = None,
+) -> Tuple[Path, Path, Path]:
     """保存评测结果
 
     Args:
@@ -154,21 +155,75 @@ def save_common_results(
         all_metrics: 所有重复运行的 metrics 列表
         results_path: 结果保存路径
         metadata: 额外元数据（如 judge_model）
+        dataset_config: 数据集配置字典（保存到 config.json）
+        experiment_config: 实验配置字典（保存到 config.json，会过滤 api_key 和 api_url）
 
     Returns:
-        (jsonl_path, json_path) 元组
+        (config_path, metrics_path, prediction_path) 元组
     """
-    results_dir = Path(results_path)
-    results_dir.mkdir(parents=True, exist_ok=True)
-
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    base_name = f"{dataset_name}_{model}_{prompt_method}_{timestamp}"
-
     per_repeat_gold = bool(gold_answers and isinstance(gold_answers[0], list))
 
-    # 1. 保存 predictions 到 jsonl
-    jsonl_path = results_dir / f"{base_name}.jsonl"
-    with open(jsonl_path, "w", encoding="utf-8") as f:
+    # 创建目录结构: results/dataset_name/model/
+    results_dir = Path(results_path)
+    output_dir = results_dir / dataset_name / model
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # 1. 保存 config.json - 包含所有配置信息
+    config_data = {
+        "dataset": dataset_name,
+        "model": model,
+        "prompt_method": prompt_method,
+        "repeats": len(all_metrics),
+    }
+
+    # 添加 dataset_config 内容（排除 schemas_module 等非 JSON 可序列化对象）
+    if dataset_config:
+        dataset_config_copy = dict(dataset_config)
+        dataset_config_copy.pop("schemas_module", None)
+        dataset_config_copy.pop("schema", None)  # schema 是类对象，不可序列化
+        config_data["dataset_config"] = dataset_config_copy
+
+    # 添加 experiment_config 内容（排除敏感信息）
+    if experiment_config:
+        experiment_config_copy = dict(experiment_config)
+        # 过滤敏感信息
+        if "llm_config" in experiment_config_copy:
+            llm_config_copy = dict(experiment_config_copy["llm_config"])
+            llm_config_copy.pop("api_key", None)
+            llm_config_copy.pop("api_url", None)
+            experiment_config_copy["llm_config"] = llm_config_copy
+        if "judge_config" in experiment_config_copy:
+            judge_config_copy = dict(experiment_config_copy["judge_config"])
+            judge_config_copy.pop("api_key", None)
+            judge_config_copy.pop("api_url", None)
+            experiment_config_copy["judge_config"] = judge_config_copy
+        config_data["experiment_config"] = experiment_config_copy
+
+    if metadata:
+        config_data["metadata"] = metadata
+
+    config_path = output_dir / "config.json"
+    config_path.write_text(
+        json.dumps(config_data, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+
+    # 2. 保存 metrics.json
+    avg_metrics = _compute_average_metrics(all_metrics)
+    metrics_data = {
+        "avg_metrics": avg_metrics,
+        "all_metrics": all_metrics,
+    }
+
+    metrics_path = output_dir / "metrics.json"
+    metrics_path.write_text(
+        json.dumps(metrics_data, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+
+    # 3. 保存 prediction.jsonl
+    prediction_path = output_dir / "prediction.jsonl"
+    with open(prediction_path, "w", encoding="utf-8") as f:
         for repeat_idx, predictions in enumerate(all_predictions):
             repeat_gold = gold_answers[repeat_idx] if per_repeat_gold else gold_answers
             for sample_idx, (pred, gold) in enumerate(zip(predictions, repeat_gold)):
@@ -180,29 +235,12 @@ def save_common_results(
                 }
                 f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
-    # 2. 计算 average metrics 并保存汇总指标到 json
-    avg_metrics = _compute_average_metrics(all_metrics)
+    print(f"Results saved to: {output_dir}")
+    print(f"  - config.json")
+    print(f"  - metrics.json")
+    print(f"  - prediction.jsonl")
 
-    json_path = results_dir / f"{base_name}.json"
-    json_data = {
-        "dataset": dataset_name,
-        "model": model,
-        "prompt_method": prompt_method,
-        "repeats": len(all_metrics),
-        "avg_metrics": avg_metrics,
-        "all_metrics": all_metrics,
-        "timestamp": timestamp,
-    }
-    if metadata:
-        json_data["metadata"] = metadata
-
-    json_path.write_text(
-        json.dumps(json_data, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
-
-    print(f"Results saved to: {jsonl_path} and {json_path}")
-    return jsonl_path, json_path
+    return config_path, metrics_path, prediction_path
 
 
 def print_summary_stats(
