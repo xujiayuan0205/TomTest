@@ -80,8 +80,8 @@ llm:
   api_url: https://api.deepseek.com/v1
   temperature: 0.6
   max_tokens: 8192
-  max_workers: 16
-  enable_thinking: False
+  max_workers: 64
+  enable_thinking: true
 
 # LLM Judge 配置（可选，用于需要 judge 的数据集）
 judge:

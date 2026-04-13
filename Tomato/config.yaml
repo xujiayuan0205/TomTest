@@ -1,0 +1,10 @@
+# Tomato 数据集配置（与 ToMBench 目录结构一致）
+
+dataset: Tomato
+path: Tomato/test
+
+# 结构化输出 schema（见 Tomato/schemas.py）；数据需为 TomDatasets/Tomato 标准 1+3 选项
+schema: MCQAnswer
+
+# 默认 prompt 方法（见 Tomato/prompts.py）
+default_prompt: v2_generate

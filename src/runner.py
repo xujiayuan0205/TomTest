@@ -5,9 +5,8 @@
 import json
 import os
 import sys
-from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Type
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 import yaml
 
@@ -136,7 +135,7 @@ def save_common_results(
     model: str,
     prompt_method: str,
     all_predictions: List[List[str]],
-    gold_answers,
+    gold_answers: Union[List[str], List[List[str]]],
     all_metrics: List[Dict[str, Any]],
     results_path: str = "results",
     metadata: Optional[Dict[str, Any]] = None,
@@ -150,9 +149,9 @@ def save_common_results(
         model: 模型名称
         prompt_method: prompt 方法
         all_predictions: 所有重复运行的预测结果列表 [repeat][sample]
-        gold_answers: 标准答案，支持两种格式：
+        gold_answers: 标准答案。支持两种格式：
             - List[str]: 所有 repeat 共用同一组 gold（如 ToMBench）
-            - List[List[str]]: 每个 repeat 有独立 gold（如 Tomato shuffle）
+            - List[List[str]]: 每个 repeat 有独立 gold（如 Tomato 选项 shuffle）
         all_metrics: 所有重复运行的 metrics 列表
         results_path: 结果保存路径
         metadata: 额外元数据（如 judge_model）
