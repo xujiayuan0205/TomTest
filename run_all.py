@@ -12,6 +12,7 @@ from pathlib import Path
 DATASETS = [
     "ToMBench",
     "Tomato",
+    "ToMQA",
 ]
 
 

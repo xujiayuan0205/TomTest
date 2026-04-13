@@ -55,3 +55,8 @@ result/
 env/
 venv/
 ENV/
+
+# Local-only (omit from upstream eval_code)
+scripts/
+experiment_configs/
+logs/

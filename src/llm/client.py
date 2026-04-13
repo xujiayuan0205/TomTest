@@ -248,7 +248,12 @@ class LLMClient:
             ]
 
             results = []
-            for future in tqdm(futures, total=len(futures), desc="Generating"):
+            for future in tqdm(
+                futures,
+                total=len(futures),
+                desc="Generating",
+                miniters=100,
+            ):
                 results.append(future.result())
 
             return results
@@ -340,7 +345,12 @@ class LLMClient:
             ]
 
             results = []
-            for future in tqdm(futures, total=len(futures), desc="Generating structure"):
+            for future in tqdm(
+                futures,
+                total=len(futures),
+                desc="Generating structure",
+                miniters=100,
+            ):
                 results.append(future.result())
 
             return results
