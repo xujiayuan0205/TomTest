@@ -1,0 +1,13 @@
+# RecToM 数据集配置
+
+dataset: RecToM
+path: RecToM/test
+
+# 默认 prompt 方法
+method: multi_label_mcq
+
+# 使用的 schema（从 src.schemas 导入）
+schema: MultiLabelAnswer
+
+# 系统 prompt（可选，会覆盖 experiment_config.yaml 中的设置）
+system_prompt: ""

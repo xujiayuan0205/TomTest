@@ -10,8 +10,18 @@ from pathlib import Path
 
 # 数据集列表
 DATASETS = [
-    "ToMBench",
+    "Belief_R",
+    "FictionalQA",
+    # "FollowBench", 指标异常低
+    "HellaSwag",
+    # "IFEval", 报错
+    "RecToM",
+    "SimpleTom",
+    "SocialIQA",
     "Tomato",
+    "ToMBench",
+    "ToMChallenges",
+    # "ToMi", 指标异常低
     "ToMQA",
 ]
 

@@ -5,16 +5,42 @@
 import json
 import os
 import sys
+from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional, Tuple, Type, Union
 
 import yaml
 
 from src.dataloader import load_dataset
 from src.llm import LLMClient
-import logging
-# 将日志级别设置为 WARNING 或更高
-logging.getLogger("urllib3").setLevel(logging.WARNING)
+from src.llm.client import LLMResponse
+
+
+def _serialize_llm_response(response: LLMResponse) -> Dict[str, Any]:
+    """序列化 LLMResponse 对象为字典
+
+    Args:
+        response: LLMResponse 对象
+
+    Returns:
+        包含 content 和 reasoning 的字典
+    """
+    content = response.content
+    if content is None:
+        serialized_content = None
+    elif hasattr(content, "model_dump"):
+        # Pydantic 模型
+        serialized_content = content.model_dump()
+    elif isinstance(content, dict):
+        serialized_content = content
+    else:
+        # 字符串或其他类型
+        serialized_content = content
+
+    return {
+        "content": serialized_content,
+        "reasoning": response.reasoning,
+    }
 
 
 def load_dataset_config(config_path: str) -> Dict[str, Any]:
@@ -24,34 +50,59 @@ def load_dataset_config(config_path: str) -> Dict[str, Any]:
         config_path: 配置文件路径
 
     Returns:
-        数据集配置字典
+        数据集配置字典（dataset, path, method, schema, system_prompt）
     """
     with open(config_path, encoding="utf-8") as f:
         config = yaml.safe_load(f)
 
-        # 动态导入数据集的 schemas 模块
-        dataset_dir = Path(config_path).parent
-        import importlib.util
-
-        spec = importlib.util.spec_from_file_location(
-            f"{config['dataset']}.schemas",
-            dataset_dir / "schemas.py"
-        )
-        schemas_module = importlib.util.module_from_spec(spec)
-        sys.modules[f"{config['dataset']}.schemas"] = schemas_module
-        spec.loader.exec_module(schemas_module)
-
-        # 从 SCHEMAS 字典获取 schema
-        schema_name = config["schema"]
-        schema = schemas_module.SCHEMAS[schema_name]
-
         return {
             "dataset": config["dataset"],
-            "subset": config["path"],
-            "schema": schema,
-            "default_prompt": config["default_prompt"],
-            "schemas_module": schemas_module,  # 暴露给 run.py 用于内部调用其他 schema
+            "path": config["path"],
+            "method": config["method"],
+            "schema": config["schema"],  # 必须指定 schema
+            "system_prompt": config.get("system_prompt", ""),  # 可选的 system prompt
         }
+
+
+def load_schema(schema_name: Optional[str]) -> Optional[Type]:
+    """根据名称动态加载 schema 类
+
+    Args:
+        schema_name: schema 类名，如 "MCQAnswer", "OpenAnswer" 等
+
+    Returns:
+        Pydantic BaseModel 类，如果 schema_name 为 None 则返回 None
+    """
+    if schema_name is None:
+        return None
+
+    from src.schemas import (
+        MCQAnswer,
+        MCQAnswer3,
+        MCQAnswer3Lower,
+        OpenAnswer,
+        OneWordAnswer,
+        JudgeAnswer,
+        MultiLabelAnswer,
+    )
+
+    schema_map = {
+        "MCQAnswer": MCQAnswer,
+        "MCQAnswer3": MCQAnswer3,
+        "MCQAnswer3Lower": MCQAnswer3Lower,
+        "OpenAnswer": OpenAnswer,
+        "OneWordAnswer": OneWordAnswer,
+        "JudgeAnswer": JudgeAnswer,
+        "MultiLabelAnswer": MultiLabelAnswer,
+    }
+
+    if schema_name not in schema_map:
+        raise ValueError(
+            f"Unknown schema: {schema_name}. "
+            f"Available schemas: {list(schema_map.keys())}"
+        )
+
+    return schema_map[schema_name]
 
 
 def load_experiment_config(config_path: str) -> Dict[str, Any]:
@@ -75,18 +126,36 @@ def load_experiment_config(config_path: str) -> Dict[str, Any]:
         }
 
 
-def create_llm_client(llm_config: Dict[str, Any]) -> LLMClient:
-    """创建 LLM 客户端
+def create_llm_client(llm_config: Dict[str, Any], dataset_config: Optional[Dict[str, Any]] = None) -> Any:
+    """创建 LLM 客户端（统一使用结构化输出）
 
     Args:
         llm_config: 配置字典，包含 model_name, api_key, api_url, temperature, max_tokens 等
+        dataset_config: 可选的数据集配置，用于覆盖 system_prompt
 
     Returns:
-        LLMClient 实例
+        StructureClient 实例
     """
     config = llm_config.copy()
+    # 优先使用 dataset_config 中的 system_prompt
+    if dataset_config and dataset_config.get("system_prompt"):
+        config["system_prompt"] = dataset_config["system_prompt"]
+    from src.llm import StructureClient
+    return StructureClient.from_config(config)
 
-    return LLMClient.from_config(config)
+
+def create_judge_client(judge_config: Dict[str, Any]) -> Optional[Any]:
+    """创建 Judge 客户端（用于 LLM judge）
+
+    Args:
+        judge_config: judge 配置字典，包含 model_name, api_key, api_url, use_llm_judge 等
+
+    Returns:
+        StructureClient 实例，如果 use_llm_judge 为 False 则返回 None
+    """
+    if not judge_config.get("use_llm_judge", False):
+        return None
+    return create_llm_client(judge_config)
 
 
 def _compute_average_metrics(all_metrics: List[Dict[str, Any]]) -> Dict[str, Any]:
@@ -131,41 +200,42 @@ def _compute_average_metrics(all_metrics: List[Dict[str, Any]]) -> Dict[str, Any
 
 
 def save_common_results(
-    dataset_name: str,
-    model: str,
-    prompt_method: str,
-    all_predictions: List[List[str]],
+    dataset_config: Dict[str, Any],
+    experiment_config: Dict[str, Any],
+    all_results: List[List[LLMResponse]],
+    all_prompts: List[List[str]],
     gold_answers: Union[List[str], List[List[str]]],
     all_metrics: List[Dict[str, Any]],
-    results_path: str = "results",
     metadata: Optional[Dict[str, Any]] = None,
-    dataset_config: Optional[Dict[str, Any]] = None,
-    experiment_config: Optional[Dict[str, Any]] = None,
 ) -> Tuple[Path, Path, Path]:
     """保存评测结果
 
     Args:
-        dataset_name: 数据集名称
-        model: 模型名称
-        prompt_method: prompt 方法
-        all_predictions: 所有重复运行的预测结果列表 [repeat][sample]
+        dataset_config: 数据集配置字典，必须包含 dataset, method, results_path 等字段
+        experiment_config: 实验配置字典，必须包含 llm_config 等字段
+        all_results: 所有重复运行的 LLMResponse 列表 [repeat][sample]
+        all_prompts: 所有重复运行的 prompt 列表 [repeat][sample]
         gold_answers: 标准答案。支持两种格式：
             - List[str]: 所有 repeat 共用同一组 gold（如 ToMBench）
             - List[List[str]]: 每个 repeat 有独立 gold（如 Tomato 选项 shuffle）
         all_metrics: 所有重复运行的 metrics 列表
-        results_path: 结果保存路径
         metadata: 额外元数据（如 judge_model）
-        dataset_config: 数据集配置字典（保存到 config.json）
-        experiment_config: 实验配置字典（保存到 config.json，会过滤 api_key 和 api_url）
 
     Returns:
         (config_path, metrics_path, prediction_path) 元组
     """
+    # 从配置中提取所需字段
+    dataset_name = dataset_config["dataset"]
+    model = experiment_config["llm_config"]["model_name"]
+    prompt_method = dataset_config["method"]
+    results_path = experiment_config["results_path"]
+
     per_repeat_gold = bool(gold_answers and isinstance(gold_answers[0], list))
 
-    # 创建目录结构: results/dataset_name/model/
+    # 创建目录结构: results/dataset_name/model/exp_{timestamp}/
     results_dir = Path(results_path)
-    output_dir = results_dir / dataset_name / model
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    output_dir = results_dir / dataset_name / model / f"exp_{timestamp}"
     output_dir.mkdir(parents=True, exist_ok=True)
 
     # 1. 保存 config.json - 包含所有配置信息
@@ -176,11 +246,9 @@ def save_common_results(
         "repeats": len(all_metrics),
     }
 
-    # 添加 dataset_config 内容（排除 schemas_module 等非 JSON 可序列化对象）
+    # 添加 dataset_config 内容（排除非 JSON 可序列化对象）
     if dataset_config:
         dataset_config_copy = dict(dataset_config)
-        dataset_config_copy.pop("schemas_module", None)
-        dataset_config_copy.pop("schema", None)  # schema 是类对象，不可序列化
         config_data["dataset_config"] = dataset_config_copy
 
     # 添加 experiment_config 内容（排除敏感信息）
@@ -224,15 +292,29 @@ def save_common_results(
     # 3. 保存 prediction.jsonl
     prediction_path = output_dir / "prediction.jsonl"
     with open(prediction_path, "w", encoding="utf-8") as f:
-        for repeat_idx, predictions in enumerate(all_predictions):
+        for repeat_idx, repeat_results in enumerate(all_results):
             repeat_gold = gold_answers[repeat_idx] if per_repeat_gold else gold_answers
-            for sample_idx, (pred, gold) in enumerate(zip(predictions, repeat_gold)):
+            repeat_prompts = all_prompts[repeat_idx] if repeat_idx < len(all_prompts) else None
+            repeat_metrics = all_metrics[repeat_idx]
+            per_sample_results = repeat_metrics.get("per_sample_results", [])
+
+            for sample_idx, (result, gold) in enumerate(zip(repeat_results, repeat_gold)):
                 record = {
                     "repeat": repeat_idx,
                     "sample_idx": sample_idx,
-                    "prediction": pred,
                     "gold_answer": gold,
+                    "pred": _serialize_llm_response(result),
                 }
+
+                # 添加 prompt
+                if repeat_prompts and sample_idx < len(repeat_prompts):
+                    record["prompt"] = repeat_prompts[sample_idx]
+
+                # 添加 is_correct 和 error_reason
+                if per_sample_results and sample_idx < len(per_sample_results):
+                    record["is_correct"] = per_sample_results[sample_idx]["is_correct"]
+                    record["error_reason"] = per_sample_results[sample_idx]["error_reason"]
+
                 f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
     print(f"Results saved to: {output_dir}")

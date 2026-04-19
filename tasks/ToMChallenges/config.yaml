@@ -1,0 +1,11 @@
+dataset: ToMChallenges
+path: ToMChallenges/test
+
+# 默认 prompt 方法
+method: ZS_vanilla
+
+# 结构化输出的 schema 类名（从 src.schemas 导入）
+schema: MCQAnswer
+
+# 系统 prompt（可选，会覆盖 experiment_config.yaml 中的设置）
+system_prompt: ""

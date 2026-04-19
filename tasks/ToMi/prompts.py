@@ -21,13 +21,17 @@ Do not output a sentence, explanation, or punctuation.""",
 }
 
 
-def build_prompt(template: str, row: Dict[str, Any]) -> str:
-    """构建 prompt"""
+def build_prompt(row: Dict[str, Any], method: str = "zero_shot") -> str:
+    """构建 prompt
+
+    Args:
+        row: 数据行
+        method: 方法名 (zero_shot/cot)
+
+    Returns:
+        格式化的 prompt
+    """
+    template = PROMPTS.get(method, PROMPTS["zero_shot"])
     story = row.get("instruction", "")
     question = row.get("input", "")
     return template.format(story=story, question=question)
-
-
-def get_template(method: str) -> str:
-    """获取指定方法的 prompt 模板"""
-    return PROMPTS.get(method, PROMPTS["zero_shot"])

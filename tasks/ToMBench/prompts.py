@@ -1,50 +1,56 @@
 """ToMBench prompts"""
 from typing import Any, Dict, List
 
-PROMPTS = {
-    "zero_shot": """You are a Theory of Mind expert.
+# 1. Vanilla Prompt for Chinese Evaluation
+VANILLA_PROMPT_CN = """
+请你提供一段故事，一个问题和若干答案选项。
+请你根据故事内容和给定的问题，按照常理推测，选择一个最可能的答案选项。
+输出答案的json只包含A、B、C、D四个选项中的一个。
 
-Story: {story}
+【故事】
+{story}
 
-Question: {question}
+【问题】
+{question}
+"""
 
-output the answer JSON with exactly one letter (A/B/C/D):""",
+# 3. Vanilla Prompt for English Evaluation
+VANILLA_PROMPT_EN = """
+Below is a multiple-choice question with a story and several answer options. 
+Based on the content of the story and the given question, please infer the most likely answer.
+Output the answer JSON with exactly one letter (A/B/C/D).
 
-    "cot": """You are a Theory of Mind expert.
+[Story]
+{story}
 
-Story: {story}
+[Question]
+{question}
+"""
 
-Question: {question}
-
-Let's think step by step...
-
-output the answer JSON with exactly one letter (A/B/C/D):""",
-}
-
-def build_prompt(template: str, row: Dict[str, Any]) -> str:
+def build_prompt(row: Dict[str, Any], method: str) -> str:
     """构建 prompt
 
     Args:
-        template: prompt 模板
         row: 数据行
+        method: 方法名 (VANILLA/COT)
 
     Returns:
         格式化的 prompt
     """
-    story = row.get("Story", "")
-    question = row.get("Question", "")
-    return template.format(story=story, question=question)
+    story = row["Story"]
+    question = row["Question"]
+    lang = row['Meta']['lang']
 
-
-def get_template(method: str) -> str:
-    """获取指定方法的 prompt 模板
-
-    Args:
-        method: prompt 方法名称
-
-    Returns:
-        prompt 模板字符串
-    """
-    return PROMPTS.get(method, PROMPTS["zero_shot"])
+    if lang == 'zh':
+        if method == 'VANILLA':
+            return VANILLA_PROMPT_CN.format(story=story, question=question)
+        else:
+            raise ValueError(f"Unsupported method={method}")
+    elif lang == 'en':
+        if method == 'VANILLA':
+            return VANILLA_PROMPT_EN.format(story=story, question=question)
+        else:
+            raise ValueError(f"Unsupported method={method}")
+    raise ValueError(f"Unsupported lang={lang}")
 
 

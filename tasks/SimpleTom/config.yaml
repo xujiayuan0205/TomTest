@@ -1,0 +1,13 @@
+# SimpleToM 数据集配置
+
+dataset: SimpleToM
+path: SimpleToM/test
+
+# 默认 prompt 方法
+method: v2_generate
+
+# 结构化输出 schema（从 src.schemas 导入，三选一 A/B/C）
+schema: MCQAnswer3
+
+# 系统 prompt（可选，会覆盖 experiment_config.yaml 中的设置）
+system_prompt: ""

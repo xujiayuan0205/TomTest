@@ -3,8 +3,11 @@
 dataset: Tomato
 path: Tomato/test
 
-# 结构化输出 schema（见 Tomato/schemas.py）；数据需为 TomDatasets/Tomato 标准 1+3 选项
+# 默认 prompt 方法（见 Tomato/prompts.py）
+method: v2_generate
+
+# 结构化输出的 schema 类名（从 src.schemas 导入）
 schema: MCQAnswer
 
-# 默认 prompt 方法（见 Tomato/prompts.py）
-default_prompt: v2_generate
+# 系统 prompt（可选，会覆盖 experiment_config.yaml 中的设置）
+system_prompt: ""

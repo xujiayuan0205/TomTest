@@ -1,33 +1,35 @@
-"""Tomato prompts：系统提示 + Transcript/Question/Options 用户块。"""
+"""Tomato prompts：Transcript/Question/Options 用户块。"""
 from typing import Any, Dict
 
-TOMATO_MCQA_SYSTEM = (
-    "You are an expert at understanding human communication. Use the transcript and options "
-    "to choose the single best answer. Respond with structured output: the answer field must be "
-    "exactly one letter A, B, C, or D matching one of the listed options."
-)
-
 PROMPTS = {
-    "v2_generate": TOMATO_MCQA_SYSTEM,
+    "v2_generate": (
+        "# Transcript\n{story}\n\n"
+        "# Question\n{question}\n\n"
+        "# Options\n{options}"
+    ),
 }
 
 
-def get_template(method: str) -> str:
-    """获取指定方法的 prompt 模板"""
-    return PROMPTS.get(method, TOMATO_MCQA_SYSTEM)
+def build_prompt(row: Dict[str, Any], method: str = "v2_generate") -> str:
+    """拼接用户块（不对正文做 str.format，避免 transcript 中花括号干扰）。
 
+    Args:
+        row: 数据行
+        method: 方法名
 
-def build_prompt(template: str, row: Dict[str, Any]) -> str:
-    """拼接用户块（不对正文做 str.format，避免 transcript 中花括号干扰）。"""
+    Returns:
+        格式化的 prompt（用户内容）
+    """
     mcq = row["_mcq"]
     story_block = mcq["story"].strip()
     question = mcq["question"].strip()
     options = mcq["original_choices"]
     lines_o = [f"[{letter}] {options[letter]}" for letter in sorted(options.keys())]
     options_block = "\n".join(lines_o)
-    user = (
+
+    return (
         f"# Transcript\n{story_block}\n\n"
         f"# Question\n{question}\n\n"
-        f"# Options\n{options_block}"
+        f"# Options\n{options_block}\n\n"
+        f"Output the answer JSON with exactly one uppercase letter (A, B, C, or D)."
     )
-    return f"{template}\n\n{user}"

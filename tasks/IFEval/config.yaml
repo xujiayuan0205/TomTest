@@ -1,0 +1,12 @@
+dataset: IFEval
+path: IFEval/test
+
+# 默认 prompt 方法
+method: zero_shot
+
+# IFEval 是开放式文本生成，不需要结构化输出
+# 使用 src/schemas 中的 OpenAnswer schema
+schema: OpenAnswer
+
+# 系统 prompt（可选，会覆盖 experiment_config.yaml 中的设置）
+system_prompt: ""

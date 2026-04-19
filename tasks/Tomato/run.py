@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import json
-import logging
 import random
 import sys
 from pathlib import Path
@@ -11,11 +10,9 @@ from typing import Any, Dict, List, Optional
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src import runner
-from Tomato.prompts import get_template, build_prompt
+from src.llm.client import LLMResponse
+from Tomato.prompts import build_prompt
 from Tomato.metrics import compute_metrics
-logging.getLogger("httpx").setLevel(logging.WARNING)
-logging.getLogger("httpcore").setLevel(logging.WARNING)
-logging.getLogger("uvicorn.access").setLevel(logging.WARNING)
 
 
 def _story_to_prompt_text(story: Dict[str, Any]) -> str:
@@ -101,67 +98,76 @@ def main() -> None:
     dataset_config = runner.load_dataset_config("tasks/Tomato/config.yaml")
     experiment_config = runner.load_experiment_config("experiment_config.yaml")
 
-    schema = dataset_config["schema"]
-    prompt_method = dataset_config["default_prompt"]
-    template = get_template(prompt_method)
-    client = runner.create_llm_client(experiment_config["llm_config"])
+    prompt_method = dataset_config["method"]
+    schema = runner.load_schema(dataset_config["schema"])
+
+    client = runner.create_llm_client(experiment_config["llm_config"], dataset_config)
+
+    # 创建 Judge 客户端（如果配置了）
+    judge_client = runner.create_judge_client(experiment_config["judge_config"])
 
     data = runner.load_and_limit_data(
-        subset=dataset_config["subset"],
+        subset=dataset_config["path"],
         datasets_path=experiment_config["datasets_path"],
         max_samples=experiment_config["max_samples"],
     )
 
-    print(f"Loaded {len(data)} raw rows from {dataset_config['subset']}")
+    print(f"Loaded {len(data)} raw rows from {dataset_config['path']}")
     data = preprocess_mcq(data)
 
     repeats = experiment_config["repeats"]
     print(f"MCQ samples: {len(data)}")
     print(f"Prompt method: {prompt_method}")
+    print(f"Schema: {dataset_config['schema']}")
     print(f"Repeats: {repeats} (each with different option shuffle)")
 
-    all_prompts: List[str] = []
+    all_prompts: List[List[str]] = []
     repeat_data: List[List[Dict[str, Any]]] = []
+    all_gold: List[List[str]] = []
 
     for i in range(repeats):
         shuffled_rows: List[Dict[str, Any]] = []
+        repeat_prompts: List[str] = []
+        repeat_gold: List[str] = []
         for j, row in enumerate(data):
             shuffled_mcq = shuffle_mcq_options(row["_mcq"], seed=42 * (i + 1) + j)
             shuffled_row = dict(row)
             shuffled_row["_mcq"] = shuffled_mcq
             shuffled_rows.append(shuffled_row)
-            all_prompts.append(build_prompt(template, shuffled_row))
+            repeat_prompts.append(build_prompt(shuffled_row, prompt_method))
+            repeat_gold.append(shuffled_mcq["gold_letter"])
         repeat_data.append(shuffled_rows)
+        all_prompts.append(repeat_prompts)
+        all_gold.append(repeat_gold)
 
-    print(f"Running inference ({len(all_prompts)} prompts)...")
-    results = client.batch_generate_structure(all_prompts, schema)
+    flat_prompts = [p for repeat_prompts in all_prompts for p in repeat_prompts]
+    print(f"Running inference ({len(flat_prompts)} prompts)...")
+    results = client.batch_generate_structure(flat_prompts, schema)
 
     n = len(data)
-    all_predictions: List[List[str]] = []
     all_metrics: List[Dict[str, Any]] = []
-    all_gold: List[List[str]] = []
+    all_results: List[List[LLMResponse]] = []
 
     for i in range(repeats):
         start = i * n
         end = start + n
         repeat_results = results[start:end]
+        all_results.append(repeat_results)
         rows = repeat_data[i]
-        predictions = [r.answer for r in repeat_results]
-        all_predictions.append(predictions)
+        predictions = [r.content.answer if r.content else None for r in repeat_results]
+        gold_letters = all_gold[i]
 
-        metrics = compute_metrics(predictions, rows)
+        metrics = compute_metrics(predictions, gold_letters, rows, judge_client)
         all_metrics.append(metrics)
-        all_gold.append([row["_mcq"]["gold_letter"] for row in rows])
         print(f"Run {i+1}: Accuracy={metrics['accuracy']:.4f}, Correct={metrics['correct']}/{metrics['total']}")
 
     runner.save_common_results(
-        dataset_name=dataset_config["dataset"],
-        model=experiment_config["llm_config"]["model_name"],
-        prompt_method=prompt_method,
-        all_predictions=all_predictions,
+        dataset_config=dataset_config,
+        experiment_config=experiment_config,
+        all_results=all_results,
+        all_prompts=all_prompts,
         gold_answers=all_gold,
         all_metrics=all_metrics,
-        results_path=experiment_config["results_path"],
     )
 
     runner.print_summary_stats(all_metrics, repeats, n)

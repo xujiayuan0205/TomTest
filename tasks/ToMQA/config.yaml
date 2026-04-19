@@ -3,8 +3,11 @@
 dataset: ToMQA
 path: ToMQA/test
 
-# 使用的 schema（从 ToMQA/schemas.py 导入）
+# 默认 prompt 方法
+method: zero_shot
+
+# 结构化输出的 schema 类名（从 src.schemas 导入）
 schema: OpenAnswer
 
-# 默认 prompt 方法
-default_prompt: zero_shot
+# 系统 prompt（可选，会覆盖 experiment_config.yaml 中的设置）
+system_prompt: ""

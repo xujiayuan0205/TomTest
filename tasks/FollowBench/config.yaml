@@ -1,0 +1,17 @@
+# FollowBench 数据集配置
+# ACL 2024: Multi-level Fine-grained Constraints Following Benchmark
+
+dataset: FollowBench
+
+# 数据集路径（在 TomDatasets 中的 subset 路径）
+# 语言版本：FollowBench/en 或 FollowBench/zh
+path: FollowBench/en
+
+# 默认 prompt 方法
+method: zero_shot
+
+# schema：开放式生成，答案是字符串（从 FollowBench/schemas.py 导入）
+schema: OpenAnswer
+
+# 系统 prompt（可选，会覆盖 experiment_config.yaml 中的设置）
+system_prompt: ""

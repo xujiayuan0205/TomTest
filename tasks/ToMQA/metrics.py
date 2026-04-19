@@ -1,6 +1,13 @@
 """ToMQA 数据集的 metrics 计算"""
-from typing import Any, Dict, List
+
+import sys
 import re
+from pathlib import Path
+from typing import Any, Dict, List, Set, Optional
+
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+from src.utils import compute_sample_metrics, compute_sample_metrics_with_llm
 
 
 def _normalize(text: Any) -> str:
@@ -52,29 +59,62 @@ def _update_group(stats: Dict[str, Dict[str, int]], key: Any, correct: bool) -> 
         stats[key_str]["correct"] += 1
 
 
-def compute_metrics(predictions: List[str], data: List[Dict[str, Any]]) -> Dict[str, Any]:
+def compute_metrics(
+    predictions: List[str],
+    gold_answers: List[str],
+    data: List[Dict[str, Any]],
+    judge_client: Optional[Any] = None,
+) -> Dict[str, Any]:
     """计算 ToMQA 的 metrics
 
     - 整体准确率（基于标准答案列表的归一化匹配）
     - 按维度、难度、任务类型、order 分组的二级指标
-    """
-    correct = 0
-    total = len(predictions)
 
+    Args:
+        predictions: 模型预测答案列表（None 表示 content_none 错误）
+        gold_answers: 金标准答案列表
+        data: 原始数据列表
+        judge_client: 可选的 Judge LLM 客户端，如果提供则使用 LLM judge
+
+    Returns:
+        包含基础指标、二级指标和 per_sample_results 的字典
+    """
+    # 预处理数据：计算每个样本的 pred_norm 和 gold_norm 集合
+    pred_norm_list = []
+    gold_norm_sets = []
+
+    for pred, row in zip(predictions, data):
+        if pred is None:
+            pred_norm_list.append(None)
+            gold_norm_sets.append(set())
+        else:
+            gold_list = _get_gold_list(row)
+            pred_norm = _normalize(pred)
+            gold_norm = {_normalize(g) for g in gold_list}
+            pred_norm_list.append(pred_norm)
+            gold_norm_sets.append(gold_norm)
+
+    # 自定义比较函数：pred_norm 在 gold_norm 集合中
+    def is_correct_fn(pred_norm: Any, gold_norm: Set[str]) -> bool:
+        return bool(pred_norm) and pred_norm in gold_norm if gold_norm else False
+
+    # 使用通用函数计算基础指标和每条样本结果
+    if judge_client is not None:
+        # LLM judge 使用原始 gold_answers
+        sample_metrics = compute_sample_metrics_with_llm(predictions, gold_answers, judge_client)
+    else:
+        sample_metrics = compute_sample_metrics(pred_norm_list, gold_norm_sets, is_correct_fn)
+    correct = sample_metrics["correct"]
+    total = sample_metrics["total"]
+    per_sample_results = sample_metrics["per_sample_results"]
+
+    # 维度统计
     by_dimension: Dict[str, Dict[str, int]] = {}
     by_difficulty: Dict[str, Dict[str, int]] = {}
     by_task_type: Dict[str, Dict[str, int]] = {}
     by_order: Dict[str, Dict[str, int]] = {}
 
-    for pred, row in zip(predictions, data):
-        gold_list = _get_gold_list(row)
-        pred_norm = _normalize(pred)
-        gold_norm = {_normalize(g) for g in gold_list}
-
-        is_correct = bool(pred_norm) and pred_norm in gold_norm if gold_norm else False
-        if is_correct:
-            correct += 1
-
+    for is_correct, row in zip([r["is_correct"] for r in per_sample_results], data):
         meta = row.get("Meta", {}) if isinstance(row.get("Meta"), dict) else {}
         dimension = meta.get("dimension", "unknown")
         if isinstance(dimension, list) and dimension:
@@ -124,4 +164,5 @@ def compute_metrics(predictions: List[str], data: List[Dict[str, Any]]) -> Dict[
         "task_type_counts": {k: v["total"] for k, v in by_task_type.items()},
         "by_order": {k: v["correct"] / v["total"] for k, v in by_order.items() if v["total"]},
         "order_counts": {k: v["total"] for k, v in by_order.items()},
+        "per_sample_results": per_sample_results,
     }
