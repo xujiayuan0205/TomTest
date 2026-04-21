@@ -1,0 +1,1148 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "action": {
+      "actions": {
+        "feature": {
+          "dtype": "null",
+          "_type": "Value"
+        },
+        "_type": "List"
+      },
+      "observers": {
+        "feature": {
+          "dtype": "null",
+          "_type": "Value"
+        },
+        "_type": "List"
+      },
+      "timestamps": {
+        "feature": {
+          "dtype": "null",
+          "_type": "Value"
+        },
+        "_type": "List"
+      }
+    },
+    "correct_answer_aliases": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "correct_answer_text": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "correct_solver_attempts": {
+      "feature": {
+        "attempt_id": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "final_answer": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "free_form_reasoning": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "is_correct": {
+          "dtype": "bool",
+          "_type": "Value"
+        },
+        "judge_raw_text": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "judge_result": {
+          "is_equivalent": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "judge_source": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "normalized_gold_answer": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "normalized_pred_answer": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "reason": {
+            "dtype": "string",
+            "_type": "Value"
+          }
+        },
+        "parsed_by_fallback": {
+          "dtype": "bool",
+          "_type": "Value"
+        },
+        "raw_model_text": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "thinking": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "usage": {
+          "completion_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            },
+            "audio_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            },
+            "reasoning_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "rejected_prediction_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            }
+          },
+          "prompt_cache_hit_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "prompt_cache_miss_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "prompt_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            },
+            "cached_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            }
+          },
+          "total_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          }
+        },
+        "usage_judge": {
+          "completion_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            },
+            "audio_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "image_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "reasoning_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "rejected_prediction_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            }
+          },
+          "cost": {
+            "dtype": "float64",
+            "_type": "Value"
+          },
+          "cost_details": {
+            "upstream_inference_completions_cost": {
+              "dtype": "float64",
+              "_type": "Value"
+            },
+            "upstream_inference_cost": {
+              "dtype": "float64",
+              "_type": "Value"
+            },
+            "upstream_inference_prompt_cost": {
+              "dtype": "float64",
+              "_type": "Value"
+            }
+          },
+          "is_byok": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "prompt_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "cache_write_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "cached_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "video_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            }
+          },
+          "total_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          }
+        }
+      },
+      "_type": "List"
+    },
+    "dimension": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "error": {
+      "dtype": "null",
+      "_type": "Value"
+    },
+    "full_story": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "id": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "meta": {
+      "dataset_source": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "difficulty": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "dimension": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "List"
+      },
+      "ethics_category": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "id": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "order": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "task_type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    "model_name_judge": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "model_name_natural": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "model_name_sip": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "model_name_solver": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "natural_reasoning_paragraph": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "num_correct_solver_attempts": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "num_parallel_solver_attempts": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "num_parseable_solver_attempts": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "num_wrong_solver_attempts": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "order": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "question": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "raw_model_text_sip": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "rewrite_source_trace": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "silver_keep_as_reference": {
+      "dtype": "bool",
+      "_type": "Value"
+    },
+    "silver_quality_score": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "silver_quality_tags": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "silver_sip_reasoning": {
+      "cue_encoding": {
+        "ignored_distractors": {
+          "feature": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "_type": "List"
+        },
+        "relevant_facts": {
+          "feature": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "_type": "List"
+        },
+        "social_cues": {
+          "feature": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "_type": "List"
+        }
+      },
+      "cue_interpretation": {
+        "belief_inference": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "emotion_inference": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "intent_inference": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "misunderstanding_or_hidden_state": {
+          "dtype": "string",
+          "_type": "Value"
+        }
+      },
+      "goal_clarification": {
+        "agent_focus": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "answer_corresponding_psychological_direction": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "social_goal_or_intent": {
+          "dtype": "string",
+          "_type": "Value"
+        }
+      },
+      "natural_cot": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "response_generation": {
+        "final_answer": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "reasoning_to_answer": {
+          "dtype": "string",
+          "_type": "Value"
+        }
+      }
+    },
+    "solver_attempts": {
+      "feature": {
+        "attempt_id": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "final_answer": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "free_form_reasoning": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "is_correct": {
+          "dtype": "bool",
+          "_type": "Value"
+        },
+        "judge_raw_text": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "judge_result": {
+          "is_equivalent": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "judge_source": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "normalized_gold_answer": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "normalized_pred_answer": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "reason": {
+            "dtype": "string",
+            "_type": "Value"
+          }
+        },
+        "parsed_by_fallback": {
+          "dtype": "bool",
+          "_type": "Value"
+        },
+        "raw_model_text": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "thinking": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "usage": {
+          "completion_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            },
+            "audio_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            },
+            "reasoning_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "rejected_prediction_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            }
+          },
+          "prompt_cache_hit_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "prompt_cache_miss_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "prompt_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            },
+            "cached_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            }
+          },
+          "total_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          }
+        },
+        "usage_judge": {
+          "completion_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            },
+            "audio_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "image_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "reasoning_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "rejected_prediction_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            }
+          },
+          "cost": {
+            "dtype": "float64",
+            "_type": "Value"
+          },
+          "cost_details": {
+            "upstream_inference_completions_cost": {
+              "dtype": "float64",
+              "_type": "Value"
+            },
+            "upstream_inference_cost": {
+              "dtype": "float64",
+              "_type": "Value"
+            },
+            "upstream_inference_prompt_cost": {
+              "dtype": "float64",
+              "_type": "Value"
+            }
+          },
+          "is_byok": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "prompt_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "cache_write_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "cached_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "video_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            }
+          },
+          "total_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          }
+        }
+      },
+      "_type": "List"
+    },
+    "solver_failures": {
+      "feature": {
+        "attempt_id": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "error": {
+          "dtype": "string",
+          "_type": "Value"
+        }
+      },
+      "_type": "List"
+    },
+    "state": {
+      "Environment_State": {
+        "changes": {
+          "feature": {
+            "dtype": "null",
+            "_type": "Value"
+          },
+          "_type": "List"
+        },
+        "locations": {
+          "feature": {
+            "dtype": "null",
+            "_type": "Value"
+          },
+          "_type": "List"
+        },
+        "objects": {
+          "feature": {
+            "dtype": "null",
+            "_type": "Value"
+          },
+          "_type": "List"
+        },
+        "other_env_states": {
+          "feature": {
+            "dtype": "null",
+            "_type": "Value"
+          },
+          "_type": "List"
+        }
+      },
+      "Human_State": {
+        "beliefs": {
+          "feature": {
+            "dtype": "null",
+            "_type": "Value"
+          },
+          "_type": "List"
+        },
+        "emotions": {
+          "feature": {
+            "dtype": "null",
+            "_type": "Value"
+          },
+          "_type": "List"
+        },
+        "other_human_states": {
+          "feature": {
+            "dtype": "null",
+            "_type": "Value"
+          },
+          "_type": "List"
+        },
+        "preferences": {
+          "feature": {
+            "dtype": "null",
+            "_type": "Value"
+          },
+          "_type": "List"
+        }
+      }
+    },
+    "story_id": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "story_summary": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "task_type": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "usage_judge_winner": {
+      "completion_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": {
+          "dtype": "null",
+          "_type": "Value"
+        },
+        "audio_tokens": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "image_tokens": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "reasoning_tokens": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "rejected_prediction_tokens": {
+          "dtype": "null",
+          "_type": "Value"
+        }
+      },
+      "cost": {
+        "dtype": "float64",
+        "_type": "Value"
+      },
+      "cost_details": {
+        "upstream_inference_completions_cost": {
+          "dtype": "float64",
+          "_type": "Value"
+        },
+        "upstream_inference_cost": {
+          "dtype": "float64",
+          "_type": "Value"
+        },
+        "upstream_inference_prompt_cost": {
+          "dtype": "float64",
+          "_type": "Value"
+        }
+      },
+      "is_byok": {
+        "dtype": "bool",
+        "_type": "Value"
+      },
+      "prompt_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "prompt_tokens_details": {
+        "audio_tokens": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "cache_write_tokens": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "cached_tokens": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "video_tokens": {
+          "dtype": "int64",
+          "_type": "Value"
+        }
+      },
+      "total_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      }
+    },
+    "usage_natural": {
+      "completion_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": {
+          "dtype": "null",
+          "_type": "Value"
+        },
+        "audio_tokens": {
+          "dtype": "null",
+          "_type": "Value"
+        },
+        "reasoning_tokens": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "rejected_prediction_tokens": {
+          "dtype": "null",
+          "_type": "Value"
+        }
+      },
+      "prompt_cache_hit_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "prompt_cache_miss_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "prompt_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "prompt_tokens_details": {
+        "audio_tokens": {
+          "dtype": "null",
+          "_type": "Value"
+        },
+        "cached_tokens": {
+          "dtype": "int64",
+          "_type": "Value"
+        }
+      },
+      "total_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      }
+    },
+    "usage_sip": {
+      "completion_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": {
+          "dtype": "null",
+          "_type": "Value"
+        },
+        "audio_tokens": {
+          "dtype": "null",
+          "_type": "Value"
+        },
+        "reasoning_tokens": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "rejected_prediction_tokens": {
+          "dtype": "null",
+          "_type": "Value"
+        }
+      },
+      "prompt_cache_hit_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "prompt_cache_miss_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "prompt_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "prompt_tokens_details": {
+        "audio_tokens": {
+          "dtype": "null",
+          "_type": "Value"
+        },
+        "cached_tokens": {
+          "dtype": "int64",
+          "_type": "Value"
+        }
+      },
+      "total_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      }
+    },
+    "usage_solver_winner": {
+      "completion_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": {
+          "dtype": "null",
+          "_type": "Value"
+        },
+        "audio_tokens": {
+          "dtype": "null",
+          "_type": "Value"
+        },
+        "reasoning_tokens": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "rejected_prediction_tokens": {
+          "dtype": "null",
+          "_type": "Value"
+        }
+      },
+      "prompt_cache_hit_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "prompt_cache_miss_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "prompt_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "prompt_tokens_details": {
+        "audio_tokens": {
+          "dtype": "null",
+          "_type": "Value"
+        },
+        "cached_tokens": {
+          "dtype": "int64",
+          "_type": "Value"
+        }
+      },
+      "total_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      }
+    },
+    "winning_solver_answer": {
+      "final_answer": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    "winning_solver_attempt_id": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "winning_solver_judge_result": {
+      "is_equivalent": {
+        "dtype": "bool",
+        "_type": "Value"
+      },
+      "judge_source": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "normalized_gold_answer": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "normalized_pred_answer": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "reason": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    "winning_solver_raw_model_text": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "winning_solver_reasoning": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "winning_solver_thinking": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "worker_id": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "wrong_solver_attempts": {
+      "feature": {
+        "attempt_id": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "final_answer": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "free_form_reasoning": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "is_correct": {
+          "dtype": "bool",
+          "_type": "Value"
+        },
+        "judge_raw_text": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "judge_result": {
+          "is_equivalent": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "judge_source": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "normalized_gold_answer": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "normalized_pred_answer": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "reason": {
+            "dtype": "string",
+            "_type": "Value"
+          }
+        },
+        "parsed_by_fallback": {
+          "dtype": "bool",
+          "_type": "Value"
+        },
+        "raw_model_text": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "thinking": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "usage": {
+          "completion_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            },
+            "audio_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            },
+            "reasoning_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "rejected_prediction_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            }
+          },
+          "prompt_cache_hit_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "prompt_cache_miss_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "prompt_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            },
+            "cached_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            }
+          },
+          "total_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          }
+        },
+        "usage_judge": {
+          "completion_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            },
+            "audio_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "image_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "reasoning_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "rejected_prediction_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            }
+          },
+          "cost": {
+            "dtype": "float64",
+            "_type": "Value"
+          },
+          "cost_details": {
+            "upstream_inference_completions_cost": {
+              "dtype": "float64",
+              "_type": "Value"
+            },
+            "upstream_inference_cost": {
+              "dtype": "float64",
+              "_type": "Value"
+            },
+            "upstream_inference_prompt_cost": {
+              "dtype": "float64",
+              "_type": "Value"
+            }
+          },
+          "is_byok": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "prompt_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "cache_write_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "cached_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "video_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            }
+          },
+          "total_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          }
+        }
+      },
+      "_type": "List"
+    }
+  },
+  "homepage": "",
+  "license": ""
+}

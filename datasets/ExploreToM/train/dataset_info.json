@@ -1,0 +1,189 @@
+{
+  "builder_name": "csv",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "explore_to_m",
+  "dataset_size": 32229681,
+  "description": "",
+  "download_checksums": {
+    "hf://datasets/facebook/ExploreToM@a4ac6f257e0034945f829716047ae6306dc625a0/ExploreToM-data-sample.csv": {
+      "num_bytes": 31848634,
+      "checksum": null
+    }
+  },
+  "download_size": 31848634,
+  "features": {
+    "State": {
+      "Human_State": {
+        "beliefs": {
+          "feature": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "_type": "Sequence"
+        },
+        "preferences": {
+          "feature": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "_type": "Sequence"
+        },
+        "emotions": {
+          "feature": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "_type": "Sequence"
+        },
+        "other_human_states": {
+          "feature": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "_type": "Sequence"
+        }
+      },
+      "Environment_State": {
+        "locations": {
+          "feature": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "_type": "Sequence"
+        },
+        "objects": {
+          "feature": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "_type": "Sequence"
+        },
+        "changes": {
+          "feature": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "_type": "Sequence"
+        },
+        "other_env_states": {
+          "feature": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "_type": "Sequence"
+        }
+      }
+    },
+    "Action": {
+      "actions": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "Sequence"
+      },
+      "observers": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "Sequence"
+      },
+      "timestamps": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "Sequence"
+      }
+    },
+    "Story": {
+      "background": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "Sequence"
+      },
+      "full_story": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "summary": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    "Question": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "Answer": {
+      "Correct_Answer": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "Sequence"
+      },
+      "Wrong_Answer": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "Sequence"
+      }
+    },
+    "Meta": {
+      "id": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "dataset_source": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "dimension": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "Sequence"
+      },
+      "order": {
+        "dtype": "int32",
+        "_type": "Value"
+      },
+      "task_type": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "difficulty": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "ethics_category": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 64078315,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 32229681,
+      "num_examples": 13309,
+      "dataset_name": "explore_to_m"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}

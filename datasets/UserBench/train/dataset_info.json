@@ -1,0 +1,472 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "State": {
+      "Human_State": {
+        "scenario": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "wanted_num": {
+          "feature": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "_type": "List"
+        },
+        "dimensions": {
+          "feature": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "_type": "List"
+        },
+        "initial_description": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "preferences": {
+          "apartment": {
+            "feature": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            },
+            "_type": "List"
+          },
+          "flight": {
+            "feature": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            },
+            "_type": "List"
+          },
+          "hotel": {
+            "feature": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            },
+            "_type": "List"
+          },
+          "rental_car": {
+            "feature": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            },
+            "_type": "List"
+          },
+          "restaurant": {
+            "feature": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            },
+            "_type": "List"
+          }
+        },
+        "arguments": {
+          "apartment": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "flight": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "hotel": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "rental_car": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "restaurant": {
+            "dtype": "string",
+            "_type": "Value"
+          }
+        }
+      },
+      "Environment_State": {
+        "apartment": {
+          "all_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "correct_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "wrong_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "noise_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "best_id": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "best_id_thought": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "options": {
+            "correct": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            },
+            "wrong": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            },
+            "noise": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            }
+          }
+        },
+        "flight": {
+          "all_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "correct_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "wrong_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "noise_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "best_id": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "best_id_thought": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "options": {
+            "correct": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            },
+            "wrong": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            },
+            "noise": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            }
+          }
+        },
+        "hotel": {
+          "all_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "correct_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "wrong_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "noise_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "best_id": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "best_id_thought": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "options": {
+            "correct": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            },
+            "wrong": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            },
+            "noise": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            }
+          }
+        },
+        "rental_car": {
+          "all_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "correct_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "wrong_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "noise_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "best_id": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "best_id_thought": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "options": {
+            "correct": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            },
+            "wrong": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            },
+            "noise": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            }
+          }
+        },
+        "restaurant": {
+          "all_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "correct_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "wrong_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "noise_ids": {
+            "feature": {
+              "dtype": "string",
+              "_type": "Value"
+            },
+            "_type": "List"
+          },
+          "best_id": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "best_id_thought": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "options": {
+            "correct": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            },
+            "wrong": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            },
+            "noise": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "List"
+            }
+          }
+        }
+      }
+    },
+    "Action": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "Story": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "Question": {
+      "system": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "user": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    "Answer": {
+      "ground_truth": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    "Meta": {
+      "id": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "dataset_source": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "dimension": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "List"
+      },
+      "task_type": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "difficulty": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "ethics_category": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "split": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  },
+  "homepage": "",
+  "license": ""
+}

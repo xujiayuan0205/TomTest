@@ -1,0 +1,268 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "id": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "story_id": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "dimension": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "order": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "task_type": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "full_story": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "question": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "correct_answer_text": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "correct_answer_aliases": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "error": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "num_parallel_solver_attempts": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "num_parseable_solver_attempts": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "num_correct_solver_attempts": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "num_wrong_solver_attempts": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "solver_attempts": {
+      "feature": {
+        "attempt_id": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "final_answer": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "free_form_reasoning": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "is_correct": {
+          "dtype": "bool",
+          "_type": "Value"
+        },
+        "match_score": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "parsed_by_fallback": {
+          "dtype": "bool",
+          "_type": "Value"
+        },
+        "raw_model_text": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "thinking": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "usage": {
+          "completion_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            },
+            "audio_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            },
+            "reasoning_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "rejected_prediction_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            }
+          },
+          "prompt_cache_hit_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "prompt_cache_miss_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "prompt_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            },
+            "cached_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            }
+          },
+          "total_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          }
+        }
+      },
+      "_type": "List"
+    },
+    "correct_solver_attempts": {
+      "feature": {
+        "dtype": "null",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "wrong_solver_attempts": {
+      "feature": {
+        "attempt_id": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "final_answer": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "free_form_reasoning": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "is_correct": {
+          "dtype": "bool",
+          "_type": "Value"
+        },
+        "match_score": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "parsed_by_fallback": {
+          "dtype": "bool",
+          "_type": "Value"
+        },
+        "raw_model_text": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "thinking": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "usage": {
+          "completion_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            },
+            "audio_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            },
+            "reasoning_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            },
+            "rejected_prediction_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            }
+          },
+          "prompt_cache_hit_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "prompt_cache_miss_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "prompt_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": {
+              "dtype": "null",
+              "_type": "Value"
+            },
+            "cached_tokens": {
+              "dtype": "int64",
+              "_type": "Value"
+            }
+          },
+          "total_tokens": {
+            "dtype": "int64",
+            "_type": "Value"
+          }
+        }
+      },
+      "_type": "List"
+    },
+    "solver_failures": {
+      "feature": {
+        "attempt_id": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "error": {
+          "dtype": "string",
+          "_type": "Value"
+        }
+      },
+      "_type": "List"
+    },
+    "worker_id": {
+      "dtype": "int64",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": ""
+}

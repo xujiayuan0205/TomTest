@@ -1,0 +1,58 @@
+{
+  "train_ratio": 0.8,
+  "seed": 42,
+  "files": {
+    "1_coarse_intent_rec": {
+      "total": 2205,
+      "train": 1764,
+      "test": 441
+    },
+    "1_intent_rec": {
+      "total": 2205,
+      "train": 1764,
+      "test": 441
+    },
+    "2_coarse_intent_seeker": {
+      "total": 2205,
+      "train": 1764,
+      "test": 441
+    },
+    "2_intent_seeker": {
+      "total": 2205,
+      "train": 1764,
+      "test": 441
+    },
+    "3_pred_rec": {
+      "total": 2098,
+      "train": 1678,
+      "test": 420
+    },
+    "4_pred_seeker": {
+      "total": 2149,
+      "train": 1719,
+      "test": 430
+    },
+    "5_reverse_judge_rec": {
+      "total": 2098,
+      "train": 1678,
+      "test": 420
+    },
+    "6_judge_seeker": {
+      "total": 2149,
+      "train": 1719,
+      "test": 430
+    },
+    "7_desire_seeker_com": {
+      "total": 1448,
+      "train": 1158,
+      "test": 290
+    },
+    "8_belief_rec_2_com": {
+      "total": 1762,
+      "train": 1409,
+      "test": 353
+    }
+  },
+  "train_total": 16417,
+  "test_total": 4107
+}
