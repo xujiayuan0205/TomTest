@@ -3,6 +3,7 @@ Structure Client - 负责结构化对象生成
 """
 
 import logging
+import re
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -69,7 +70,7 @@ class StructureClient(LLMClient):
         prompt: str,
         response_object: Type[BaseModel],
         max_retry: int = 5,
-        timeout: int = 60,
+        timeout: int = 60000,
     ) -> LLMResponse:
         """使用 parse API 的原生结构化输出。"""
         extra_body = build_extra_body(self.top_k, self.enable_thinking)
@@ -104,7 +105,7 @@ class StructureClient(LLMClient):
 
                 message = response.choices[0].message
                 result = message.parsed
-                reasoning = getattr(message, "reasoning", "") or ""
+                reasoning = self._extract_reasoning(message)
                 self._track_usage(
                     prompt_tokens=prompt_tokens,
                     completion_tokens=completion_tokens,
@@ -174,7 +175,7 @@ Output ONLY the JSON object, no additional text or markdown formatting."""
 
                 message = response.choices[0].message
                 content = message.content or ""
-                reasoning = getattr(message, "reasoning", "") or ""
+                reasoning = self._extract_reasoning(message)
                 # 提取 JSON
                 json_data = extract_json(content)
                 if json_data is None:
@@ -197,6 +198,23 @@ Output ONLY the JSON object, no additional text or markdown formatting."""
         logging.error(f"[StructureClient] create mode all {max_retry} attempts exhausted")
         self._track_usage(success=False)
         return LLMResponse(content=None, reasoning=None)
+
+    def _extract_reasoning(self, message: Any) -> str:
+        """提取 reasoning：优先 message.reasoning，兜底从 content 的 think 块提取。"""
+        reasoning = getattr(message, "reasoning", "") or ""
+        if reasoning:
+            return reasoning
+
+        content = getattr(message, "content", "") or ""
+        if not isinstance(content, str):
+            return ""
+
+        # 兜底兼容：部分后端会把思考过程塞到 content 的 <think>...</think> 中
+        match = re.search(r"<think>\s*([\s\S]*?)\s*</think>", content)
+        if match:
+            return match.group(1).strip()
+
+        return ""
 
     def generate_structure(
         self,
@@ -244,7 +262,7 @@ Output ONLY the JSON object, no additional text or markdown formatting."""
 
         # 先用第一个 prompt 测试 parse 模式
         logging.info("[StructureClient] Testing parse mode with first prompt...")
-        first_result = self._generate_with_parse(prompts[0], response_object, max_retry=1, timeout=10)
+        first_result = self._generate_with_parse(prompts[0], response_object, max_retry=1, timeout=100)
 
         # 根据测试结果决定使用哪种模式
         if first_result.content is None:

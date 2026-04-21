@@ -63,7 +63,7 @@ class ContentClient(LLMClient):
                     presence_penalty=self.presence_penalty,
                     messages=messages,
                     extra_body=extra_body,
-                    timeout=60,
+                    timeout=60000,
                 )
 
                 latency = time.time() - start

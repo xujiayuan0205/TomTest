@@ -1,5 +1,17 @@
 """ToMBench prompts"""
-from typing import Any, Dict, List
+from typing import Any, Dict
+
+
+def _row_lang(row: Dict[str, Any], story: str) -> str:
+    """读取 Meta.lang；若缺失则推断（顶层 ToMBench/test 合并版 arrow 常无 lang 字段）。"""
+    meta = row.get("Meta") or {}
+    lang = meta.get("lang")
+    if lang in ("zh", "en"):
+        return lang
+    sample = (story or "")[:800]
+    if any("\u4e00" <= c <= "\u9fff" for c in sample):
+        return "zh"
+    return "en"
 
 # 1. Vanilla Prompt for Chinese Evaluation
 VANILLA_PROMPT_CN = """
@@ -39,7 +51,7 @@ def build_prompt(row: Dict[str, Any], method: str) -> str:
     """
     story = row["Story"]
     question = row["Question"]
-    lang = row['Meta']['lang']
+    lang = _row_lang(row, story)
 
     if lang == 'zh':
         if method == 'VANILLA':

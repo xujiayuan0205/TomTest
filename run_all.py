@@ -5,24 +5,27 @@
 """
 import subprocess
 import sys
+import os
 from pathlib import Path
 
 
 # 数据集列表
 DATASETS = [
-    "Belief_R",
-    "FictionalQA",
-    # "FollowBench", 指标异常低
-    "HellaSwag",
-    # "IFEval", 报错
-    "RecToM",
-    "SimpleTom",
-    "SocialIQA",
+    
     "Tomato",
     "ToMBench",
-    "ToMChallenges",
+    
     # "ToMi", 指标异常低
     "ToMQA",
+    # "ToMChallenges",
+    # "Belief_R",
+    # "FictionalQA",
+    # # "FollowBench", 指标异常低
+    # "HellaSwag",
+    # # "IFEval", 报错
+    # "RecToM",
+    # "SimpleTom",
+    # "SocialIQA",
 ]
 
 
@@ -35,7 +38,8 @@ def run_dataset(dataset: str) -> bool:
     Returns:
         是否成功
     """
-    run_script = Path(f"tasks/{dataset}/run.py")
+    project_root = Path(__file__).resolve().parent
+    run_script = project_root / "tasks" / dataset / "run.py"
     if not run_script.exists():
         print(f"[{dataset}] run.py not found, skipping.")
         return False
@@ -45,10 +49,19 @@ def run_dataset(dataset: str) -> bool:
     print(f"{'='*60}")
 
     try:
+        env = os.environ.copy()
+        existing_pythonpath = env.get("PYTHONPATH", "")
+        env["PYTHONPATH"] = (
+            f"{project_root}:{existing_pythonpath}"
+            if existing_pythonpath
+            else str(project_root)
+        )
         result = subprocess.run(
             [sys.executable, str(run_script)],
             check=True,
             capture_output=False,
+            cwd=project_root,
+            env=env,
         )
         return True
     except subprocess.CalledProcessError as e:

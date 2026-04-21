@@ -1,25 +1,36 @@
 llm:
-  model_name: Qwen3-8B
+  model_name: Qwen3-8B-SIPWithSelfCoT
   api_key: not-needed
   api_url: http://0.0.0.0:8000/v1
   temperature: 0.6
-  max_tokens: 32768
-  max_workers: 64
-  enable_thinking: false
-  system_prompt: ""
-
+  max_tokens: 8192
+  max_workers: 4
+  enable_thinking: true
+  system_prompt: ''
 judge:
-  model_name: Qwen3-8B
+  model_name: Qwen3-8B-SIPWithSelfCoT
   api_key: not-needed
   api_url: http://0.0.0.0:8000/v1
   temperature: 0.0
   max_tokens: 4096
-  system_prompt: ""
+  system_prompt: ''
   enable_thinking: false
-  # 是否使用 LLM judge（如果为 True，会加载 judge_client 并用于评估）
   use_llm_judge: false
+vllm:
+  sigterm_gpu_vllm_processes: true
+  extra_stop_command: 'pkill -f ''vllm.entrypoints.openai.api_server'' || true
 
+    '
+  sleep_sec_after_stop: 20
+  wait_min_free_gpu_mib: 28000
+  wait_gpu_timeout_sec: 180
+  start_commands:
+    Qwen3-8B-SIPWithSelfCoT: "/DATA/xujy/miniconda3/envs/tomtest/bin/python -m vllm.entrypoints.openai.api_server\
+      \ \\\n  --model /DATA/xujy/models/Qwen3-8B-SIPWithSelfCoT \\\n  --trust-remote-code\
+      \ --reasoning-parser qwen3 --host 0.0.0.0 --port 8000 \\\n  --served-model-name\
+      \ Qwen3-8B-SIPWithSelfCoT \\\n  --gpu-memory-utilization 0.85 \\\n  --disable-uvicorn-access-log\
+      \ --no-enable-log-requests\n"
 repeats: 1
-max_samples: 100
+max_samples: 1
 datasets_path: datasets
 results_path: results
