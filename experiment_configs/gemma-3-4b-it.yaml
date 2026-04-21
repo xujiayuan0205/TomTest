@@ -1,0 +1,36 @@
+llm:
+  # 短名仅作占位；跑 scripts/run_tomqa_gemma3_4b.sh 时会按 GET /v1/models 的 id 覆盖（本地路径 serve 常为完整路径）
+  model_name: gemma-3-4b-it
+  api_key: not-needed
+  api_url: http://127.0.0.1:8006/v1
+  # vLLM 对 OpenAI chat.completions.parse 支持不完整，易大量 parse 失败；用 create + JSON 降级更稳
+  structured_parse: false
+  # 与 OpenAI 默认一致；默认 2 对部分 vLLM/路由不友好
+  presence_penalty: 0
+  # 思考模式会在 JSON 前输出长推理，极易导致解析失败
+  enable_thinking: false
+  # 让服务端约束输出为 JSON（vLLM 0.19+ 通常支持）
+  json_response_format: true
+  temperature: 0.6
+  # ToMQA 开放题 + parse：8192 易顶满触发 LengthFinishReasonError；可按显存再调到 32768
+  max_tokens: 16384
+  # 本地 vLLM：并发过高易排队/超时；可先 4，稳定后再调到 8
+  max_workers: 4
+
+judge:
+  model_name: gemma-3-4b-it
+  api_key: not-needed
+  api_url: http://127.0.0.1:8006/v1
+  temperature: 0.0
+  max_tokens: 4096
+  system_prompt: ""
+  enable_thinking: false
+  use_llm_judge: true
+
+badcase:
+  enabled: true
+
+repeats: 3
+max_samples: 0
+datasets_path: datasets
+results_path: results/gemma-3-4b-it

@@ -1,0 +1,76 @@
+{
+  "avg_metrics": {
+    "accuracy": 0.0,
+    "correct": 0.0,
+    "total": 1.0,
+    "by_dimension.first_order_belief": 0.0,
+    "by_dimension.second_order_belief": 0.0,
+    "by_difficulty.easy": 0.0,
+    "by_task_type.qa": 0.0,
+    "by_order.2": 0.0,
+    "by_dimension": {
+      "second_order_belief": 0.0,
+      "first_order_belief": 0.0
+    },
+    "dimension_counts": {
+      "second_order_belief": 1.0,
+      "first_order_belief": 0.0
+    },
+    "by_difficulty": {
+      "easy": 0.0
+    },
+    "difficulty_counts": {
+      "easy": 1.0
+    },
+    "by_task_type": {
+      "qa": 0.0
+    },
+    "task_type_counts": {
+      "qa": 1.0
+    },
+    "by_order": {
+      "2": 0.0
+    },
+    "order_counts": {
+      "2": 1.0
+    }
+  },
+  "all_metrics": [
+    {
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 1,
+      "by_dimension.first_order_belief": 0,
+      "by_dimension.second_order_belief": 0.0,
+      "by_difficulty.easy": 0.0,
+      "by_task_type.qa": 0.0,
+      "by_order.2": 0.0,
+      "by_dimension": {
+        "first_order_belief": 0,
+        "second_order_belief": 0.0
+      },
+      "dimension_counts": {
+        "first_order_belief": 0,
+        "second_order_belief": 1
+      },
+      "by_difficulty": {
+        "easy": 0.0
+      },
+      "difficulty_counts": {
+        "easy": 1
+      },
+      "by_task_type": {
+        "qa": 0.0
+      },
+      "task_type_counts": {
+        "qa": 1
+      },
+      "by_order": {
+        "2": 0.0
+      },
+      "order_counts": {
+        "2": 1
+      }
+    }
+  ]
+}

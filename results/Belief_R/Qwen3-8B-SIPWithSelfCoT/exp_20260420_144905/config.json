@@ -1,0 +1,35 @@
+{
+  "dataset": "Belief_R",
+  "model": "Qwen3-8B-SIPWithSelfCoT",
+  "prompt_method": "ZS_vanilla",
+  "repeats": 1,
+  "dataset_config": {
+    "dataset": "Belief_R",
+    "path": "Belief_R/test",
+    "method": "ZS_vanilla",
+    "schema": "MCQAnswer3Lower",
+    "system_prompt": ""
+  },
+  "experiment_config": {
+    "llm_config": {
+      "model_name": "Qwen3-8B-SIPWithSelfCoT",
+      "temperature": 0.6,
+      "max_tokens": 16384,
+      "max_workers": 64,
+      "enable_thinking": false,
+      "system_prompt": ""
+    },
+    "repeats": 1,
+    "max_samples": 100,
+    "datasets_path": "datasets",
+    "results_path": "results",
+    "judge_config": {
+      "model_name": "Qwen3-8B-SIPWithSelfCoT",
+      "temperature": 0.0,
+      "max_tokens": 4096,
+      "system_prompt": "",
+      "enable_thinking": false,
+      "use_llm_judge": false
+    }
+  }
+}

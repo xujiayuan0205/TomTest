@@ -1,0 +1,14 @@
+{
+  "avg_metrics": {
+    "accuracy": 0.0,
+    "correct": 0.0,
+    "total": 1.0
+  },
+  "all_metrics": [
+    {
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 1
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "avg_metrics": {
+    "accuracy": 0.17772222222222223,
+    "correct": 2132.6666666666665,
+    "total": 12000.0,
+    "by_dimension.first_order_belief": 0.3248888888888889,
+    "by_dimension.second_order_belief": 0.030555555555555558,
+    "by_difficulty.easy": 0.17772222222222223,
+    "by_task_type.qa": 0.17772222222222223,
+    "by_order.2": 0.030555555555555558,
+    "by_order.1": 0.3248888888888889,
+    "by_dimension": {
+      "first_order_belief": 0.3248888888888889,
+      "second_order_belief": 0.030555555555555558
+    },
+    "dimension_counts": {
+      "first_order_belief": 6000.0,
+      "second_order_belief": 6000.0
+    },
+    "by_difficulty": {
+      "easy": 0.17772222222222223
+    },
+    "difficulty_counts": {
+      "easy": 12000.0
+    },
+    "by_task_type": {
+      "qa": 0.17772222222222223
+    },
+    "task_type_counts": {
+      "qa": 12000.0
+    },
+    "by_order": {
+      "2": 0.030555555555555558,
+      "1": 0.3248888888888889
+    },
+    "order_counts": {
+      "2": 6000.0,
+      "1": 6000.0
+    }
+  },
+  "all_metrics": [
+    {
+      "accuracy": 0.17425,
+      "correct": 2091,
+      "total": 12000,
+      "by_dimension.first_order_belief": 0.31916666666666665,
+      "by_dimension.second_order_belief": 0.029333333333333333,
+      "by_difficulty.easy": 0.17425,
+      "by_task_type.qa": 0.17425,
+      "by_order.2": 0.029333333333333333,
+      "by_order.1": 0.31916666666666665,
+      "by_dimension": {
+        "first_order_belief": 0.31916666666666665,
+        "second_order_belief": 0.029333333333333333
+      },
+      "dimension_counts": {
+        "first_order_belief": 6000,
+        "second_order_belief": 6000
+      },
+      "by_difficulty": {
+        "easy": 0.17425
+      },
+      "difficulty_counts": {
+        "easy": 12000
+      },
+      "by_task_type": {
+        "qa": 0.17425
+      },
+      "task_type_counts": {
+        "qa": 12000
+      },
+      "by_order": {
+        "2": 0.029333333333333333,
+        "1": 0.31916666666666665
+      },
+      "order_counts": {
+        "2": 6000,
+        "1": 6000
+      }
+    },
+    {
+      "accuracy": 0.18016666666666667,
+      "correct": 2162,
+      "total": 12000,
+      "by_dimension.first_order_belief": 0.32766666666666666,
+      "by_dimension.second_order_belief": 0.03266666666666666,
+      "by_difficulty.easy": 0.18016666666666667,
+      "by_task_type.qa": 0.18016666666666667,
+      "by_order.2": 0.03266666666666666,
+      "by_order.1": 0.32766666666666666,
+      "by_dimension": {
+        "first_order_belief": 0.32766666666666666,
+        "second_order_belief": 0.03266666666666666
+      },
+      "dimension_counts": {
+        "first_order_belief": 6000,
+        "second_order_belief": 6000
+      },
+      "by_difficulty": {
+        "easy": 0.18016666666666667
+      },
+      "difficulty_counts": {
+        "easy": 12000
+      },
+      "by_task_type": {
+        "qa": 0.18016666666666667
+      },
+      "task_type_counts": {
+        "qa": 12000
+      },
+      "by_order": {
+        "2": 0.03266666666666666,
+        "1": 0.32766666666666666
+      },
+      "order_counts": {
+        "2": 6000,
+        "1": 6000
+      }
+    },
+    {
+      "accuracy": 0.17875,
+      "correct": 2145,
+      "total": 12000,
+      "by_dimension.first_order_belief": 0.3278333333333333,
+      "by_dimension.second_order_belief": 0.029666666666666668,
+      "by_difficulty.easy": 0.17875,
+      "by_task_type.qa": 0.17875,
+      "by_order.2": 0.029666666666666668,
+      "by_order.1": 0.3278333333333333,
+      "by_dimension": {
+        "first_order_belief": 0.3278333333333333,
+        "second_order_belief": 0.029666666666666668
+      },
+      "dimension_counts": {
+        "first_order_belief": 6000,
+        "second_order_belief": 6000
+      },
+      "by_difficulty": {
+        "easy": 0.17875
+      },
+      "difficulty_counts": {
+        "easy": 12000
+      },
+      "by_task_type": {
+        "qa": 0.17875
+      },
+      "task_type_counts": {
+        "qa": 12000
+      },
+      "by_order": {
+        "2": 0.029666666666666668,
+        "1": 0.3278333333333333
+      },
+      "order_counts": {
+        "2": 6000,
+        "1": 6000
+      }
+    }
+  ]
+}

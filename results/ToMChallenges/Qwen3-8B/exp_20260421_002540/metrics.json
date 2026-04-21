@@ -1,0 +1,40 @@
+{
+  "avg_metrics": {
+    "accuracy": 0.6277777777777778,
+    "correct": 226.0,
+    "total": 360.0,
+    "by_order.1": 0.5,
+    "by_order.unknown": 1.0,
+    "by_order.2": 0.38333333333333336,
+    "by_order": {
+      "unknown": 1.0,
+      "2": 0.38333333333333336,
+      "1": 0.5
+    },
+    "order_counts": {
+      "unknown": 120.0,
+      "2": 120.0,
+      "1": 120.0
+    }
+  },
+  "all_metrics": [
+    {
+      "accuracy": 0.6277777777777778,
+      "correct": 226,
+      "total": 360,
+      "by_order.1": 0.5,
+      "by_order.unknown": 1.0,
+      "by_order.2": 0.38333333333333336,
+      "by_order": {
+        "1": 0.5,
+        "unknown": 1.0,
+        "2": 0.38333333333333336
+      },
+      "order_counts": {
+        "1": 120,
+        "unknown": 120,
+        "2": 120
+      }
+    }
+  ]
+}

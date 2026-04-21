@@ -1,0 +1,464 @@
+{
+  "avg_metrics": {
+    "accuracy": 0.29,
+    "correct": 29.0,
+    "total": 100.0,
+    "by_dimension_1.belief": 0.21739130434782608,
+    "by_dimension_1.desire": 0.4117647058823529,
+    "by_dimension_1.emotion": 0.3684210526315789,
+    "by_dimension_1.intention": 0.2631578947368421,
+    "by_dimension_1.knowledge": 0.22727272727272727,
+    "by_dimension_2.first_order": 0.2982456140350877,
+    "by_dimension_2.second_order": 0.27906976744186046,
+    "by_dimension_3.__none__": 0.3176470588235294,
+    "by_dimension_3.false_belief": 0.13333333333333333,
+    "dimension_1_counts": {
+      "belief": 23.0,
+      "knowledge": 22.0,
+      "intention": 19.0,
+      "desire": 17.0,
+      "emotion": 19.0
+    },
+    "dimension_2_counts": {
+      "first_order": 57.0,
+      "second_order": 43.0
+    },
+    "dimension_3_counts": {
+      "false_belief": 15.0,
+      "__none__": 85.0
+    }
+  },
+  "all_metrics": [
+    {
+      "accuracy": 0.29,
+      "correct": 29,
+      "total": 100,
+      "by_dimension_1.belief": 0.21739130434782608,
+      "by_dimension_1.desire": 0.4117647058823529,
+      "by_dimension_1.emotion": 0.3684210526315789,
+      "by_dimension_1.intention": 0.2631578947368421,
+      "by_dimension_1.knowledge": 0.22727272727272727,
+      "by_dimension_2.first_order": 0.2982456140350877,
+      "by_dimension_2.second_order": 0.27906976744186046,
+      "by_dimension_3.__none__": 0.3176470588235294,
+      "by_dimension_3.false_belief": 0.13333333333333333,
+      "dimension_1_counts": {
+        "belief": 23,
+        "desire": 17,
+        "emotion": 19,
+        "intention": 19,
+        "knowledge": 22
+      },
+      "dimension_2_counts": {
+        "first_order": 57,
+        "second_order": 43
+      },
+      "dimension_3_counts": {
+        "__none__": 85,
+        "false_belief": 15
+      },
+      "per_sample_results": [
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "content_none"
+        }
+      ]
+    }
+  ]
+}

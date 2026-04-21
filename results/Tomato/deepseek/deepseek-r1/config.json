@@ -1,0 +1,6 @@
+{
+  "dataset": "Tomato",
+  "model": "deepseek/deepseek-r1",
+  "prompt_method": "v2_generate",
+  "repeats": 3
+}

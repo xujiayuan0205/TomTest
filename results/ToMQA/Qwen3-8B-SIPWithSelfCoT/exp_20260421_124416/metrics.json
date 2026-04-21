@@ -1,0 +1,484 @@
+{
+  "avg_metrics": {
+    "accuracy": 0.68,
+    "correct": 68.0,
+    "total": 100.0,
+    "by_dimension.first_order_belief": 0.6538461538461539,
+    "by_dimension.second_order_belief": 0.7083333333333334,
+    "by_difficulty.easy": 0.68,
+    "by_task_type.qa": 0.68,
+    "by_order.2": 0.7083333333333334,
+    "by_order.1": 0.6538461538461539,
+    "by_dimension": {
+      "second_order_belief": 0.7083333333333334,
+      "first_order_belief": 0.6538461538461539
+    },
+    "dimension_counts": {
+      "second_order_belief": 48.0,
+      "first_order_belief": 52.0
+    },
+    "by_difficulty": {
+      "easy": 0.68
+    },
+    "difficulty_counts": {
+      "easy": 100.0
+    },
+    "by_task_type": {
+      "qa": 0.68
+    },
+    "task_type_counts": {
+      "qa": 100.0
+    },
+    "by_order": {
+      "1": 0.6538461538461539,
+      "2": 0.7083333333333334
+    },
+    "order_counts": {
+      "1": 52.0,
+      "2": 48.0
+    }
+  },
+  "all_metrics": [
+    {
+      "accuracy": 0.68,
+      "correct": 68,
+      "total": 100,
+      "by_dimension.first_order_belief": 0.6538461538461539,
+      "by_dimension.second_order_belief": 0.7083333333333334,
+      "by_difficulty.easy": 0.68,
+      "by_task_type.qa": 0.68,
+      "by_order.2": 0.7083333333333334,
+      "by_order.1": 0.6538461538461539,
+      "by_dimension": {
+        "first_order_belief": 0.6538461538461539,
+        "second_order_belief": 0.7083333333333334
+      },
+      "dimension_counts": {
+        "first_order_belief": 52,
+        "second_order_belief": 48
+      },
+      "by_difficulty": {
+        "easy": 0.68
+      },
+      "difficulty_counts": {
+        "easy": 100
+      },
+      "by_task_type": {
+        "qa": 0.68
+      },
+      "task_type_counts": {
+        "qa": 100
+      },
+      "by_order": {
+        "2": 0.7083333333333334,
+        "1": 0.6538461538461539
+      },
+      "order_counts": {
+        "2": 48,
+        "1": 52
+      },
+      "per_sample_results": [
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        }
+      ]
+    }
+  ]
+}

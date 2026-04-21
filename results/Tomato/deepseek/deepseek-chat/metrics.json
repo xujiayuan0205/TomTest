@@ -1,0 +1,120 @@
+{
+  "avg_metrics": {
+    "accuracy": 0.7938036166142073,
+    "correct": 4287.333333333333,
+    "total": 5401.0,
+    "by_dimension_1.belief": 0.7784791103095882,
+    "by_dimension_1.desire": 0.8305691056910569,
+    "by_dimension_1.emotion": 0.8085676037483266,
+    "by_dimension_1.intention": 0.7945945945945946,
+    "by_dimension_1.knowledge": 0.7625610106230262,
+    "by_dimension_2.first_order": 0.8333333333333334,
+    "by_dimension_2.second_order": 0.7549847094801224,
+    "by_dimension_3.__none__": 0.8168298875589408,
+    "by_dimension_3.false_belief": 0.6625310173697271,
+    "dimension_1_counts": {
+      "desire": 1025.0,
+      "emotion": 996.0,
+      "knowledge": 1161.0,
+      "belief": 1109.0,
+      "intention": 1110.0
+    },
+    "dimension_2_counts": {
+      "second_order": 2725.0,
+      "first_order": 2676.0
+    },
+    "dimension_3_counts": {
+      "__none__": 4595.0,
+      "false_belief": 806.0
+    }
+  },
+  "all_metrics": [
+    {
+      "accuracy": 0.7970746158118867,
+      "correct": 4305,
+      "total": 5401,
+      "by_dimension_1.belief": 0.7727682596934174,
+      "by_dimension_1.desire": 0.8380487804878048,
+      "by_dimension_1.emotion": 0.8132530120481928,
+      "by_dimension_1.intention": 0.7990990990990992,
+      "by_dimension_1.knowledge": 0.768303186907838,
+      "by_dimension_2.first_order": 0.8318385650224215,
+      "by_dimension_2.second_order": 0.7629357798165137,
+      "by_dimension_3.__none__": 0.8189336235038085,
+      "by_dimension_3.false_belief": 0.6724565756823822,
+      "dimension_1_counts": {
+        "belief": 1109,
+        "desire": 1025,
+        "emotion": 996,
+        "intention": 1110,
+        "knowledge": 1161
+      },
+      "dimension_2_counts": {
+        "first_order": 2676,
+        "second_order": 2725
+      },
+      "dimension_3_counts": {
+        "__none__": 4595,
+        "false_belief": 806
+      }
+    },
+    {
+      "accuracy": 0.7965191631179411,
+      "correct": 4302,
+      "total": 5401,
+      "by_dimension_1.belief": 0.7917042380522994,
+      "by_dimension_1.desire": 0.8253658536585365,
+      "by_dimension_1.emotion": 0.8072289156626506,
+      "by_dimension_1.intention": 0.8009009009009009,
+      "by_dimension_1.knowledge": 0.7622739018087855,
+      "by_dimension_2.first_order": 0.8400597907324364,
+      "by_dimension_2.second_order": 0.7537614678899083,
+      "by_dimension_3.__none__": 0.8211099020674646,
+      "by_dimension_3.false_belief": 0.6563275434243176,
+      "dimension_1_counts": {
+        "belief": 1109,
+        "desire": 1025,
+        "emotion": 996,
+        "intention": 1110,
+        "knowledge": 1161
+      },
+      "dimension_2_counts": {
+        "first_order": 2676,
+        "second_order": 2725
+      },
+      "dimension_3_counts": {
+        "__none__": 4595,
+        "false_belief": 806
+      }
+    },
+    {
+      "accuracy": 0.787817070912794,
+      "correct": 4255,
+      "total": 5401,
+      "by_dimension_1.belief": 0.7709648331830478,
+      "by_dimension_1.desire": 0.8282926829268292,
+      "by_dimension_1.emotion": 0.8052208835341366,
+      "by_dimension_1.intention": 0.7837837837837838,
+      "by_dimension_1.knowledge": 0.7571059431524548,
+      "by_dimension_2.first_order": 0.828101644245142,
+      "by_dimension_2.second_order": 0.7482568807339449,
+      "by_dimension_3.__none__": 0.8104461371055495,
+      "by_dimension_3.false_belief": 0.6588089330024814,
+      "dimension_1_counts": {
+        "belief": 1109,
+        "desire": 1025,
+        "emotion": 996,
+        "intention": 1110,
+        "knowledge": 1161
+      },
+      "dimension_2_counts": {
+        "first_order": 2676,
+        "second_order": 2725
+      },
+      "dimension_3_counts": {
+        "__none__": 4595,
+        "false_belief": 806
+      }
+    }
+  ]
+}

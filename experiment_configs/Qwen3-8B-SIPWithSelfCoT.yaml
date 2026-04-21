@@ -1,0 +1,43 @@
+llm:
+  model_name: Qwen3-8B-SIPWithSelfCoT
+  api_key: not-needed
+  api_url: http://0.0.0.0:8000/v1
+  temperature: 0.6
+  max_tokens: 8192
+  max_workers: 96
+  enable_thinking: true
+  system_prompt: ""
+
+judge:
+  model_name: Qwen3-8B-SIPWithSelfCoT
+  api_key: not-needed
+  api_url: http://0.0.0.0:8000/v1
+  temperature: 0.0
+  max_tokens: 4096
+  system_prompt: ""
+  enable_thinking: false
+  # 是否使用 LLM judge（如果为 True，会加载 judge_client 并用于评估）
+  use_llm_judge: false
+
+vllm:
+  # pkill 无法匹配 EngineCore 等子进程；mode_runner 会先发 SIGTERM 给本脚本启动的进程组，再按 nvidia-smi 清理
+  sigterm_gpu_vllm_processes: true
+  extra_stop_command: |
+    pkill -f 'vllm.entrypoints.openai.api_server' || true
+  sleep_sec_after_stop: 20
+  # vLLM 0.19 启动前会检查：空闲显存 >= gpu_memory_utilization * 总显存（约 27GiB/32GB 卡）
+  wait_min_free_gpu_mib: 28000
+  wait_gpu_timeout_sec: 180
+  start_commands:
+    Qwen3-8B-SIPWithSelfCoT: |
+      /DATA/xujy/miniconda3/envs/tomtest/bin/python -m vllm.entrypoints.openai.api_server \
+        --model /DATA/xujy/models/Qwen3-8B-SIPWithSelfCoT \
+        --trust-remote-code --reasoning-parser qwen3 --host 0.0.0.0 --port 8000 \
+        --served-model-name Qwen3-8B-SIPWithSelfCoT \
+        --gpu-memory-utilization 0.85 \
+        --disable-uvicorn-access-log --no-enable-log-requests
+
+repeats: 1
+max_samples: 100
+datasets_path: datasets
+results_path: results

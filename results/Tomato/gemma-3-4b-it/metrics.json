@@ -1,0 +1,16 @@
+{
+  "avg_metrics": {
+    "accuracy": 0.5632,
+    "correct": 3041.6667,
+    "total": 5401,
+    "by_dimension_1.belief": 0.5362,
+    "by_dimension_1.desire": 0.5997,
+    "by_dimension_1.emotion": 0.5699,
+    "by_dimension_1.intention": 0.5556,
+    "by_dimension_1.knowledge": 0.5581,
+    "by_dimension_2.first_order": 0.5904,
+    "by_dimension_2.second_order": 0.5364,
+    "by_dimension_3.__none__": 0.5854,
+    "by_dimension_3.false_belief": 0.4363
+  }
+}

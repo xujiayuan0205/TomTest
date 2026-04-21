@@ -1,0 +1,568 @@
+{
+  "avg_metrics": {
+    "accuracy": 0.7,
+    "correct": 70.0,
+    "total": 100.0,
+    "by_ability.Emotion: Atypical emotional reactions": 0.16666666666666666,
+    "by_ability.Belief: Location false beliefs": 1.0,
+    "by_ability.Intention: Intentions explanations": 0.8888888888888888,
+    "by_ability.Non-Literal Communication: Faux pas": 0.7142857142857143,
+    "by_ability.Belief: Content false beliefs Belief: Second-order beliefs": 1.0,
+    "by_ability.Belief: Sequence false beliefs": 0.8571428571428571,
+    "by_ability.Emotion: Mixed emotions": 0.0,
+    "by_ability.Belief: Location false beliefs Belief: Second-order beliefs": 1.0,
+    "by_ability.Non-literal communication: Humor": 1.0,
+    "by_ability.Knowledge: Knowledge-pretend play links": 0.3333333333333333,
+    "by_ability.Belief: Content false beliefs": 0.6666666666666666,
+    "by_ability.Knowledge: Information-knowledge links": 1.0,
+    "by_ability.Belief: Identity false beliefs": 0.0,
+    "by_ability.Belief: Beliefs based action/emotions": 0.5,
+    "by_ability.Desire: Desires influence on actions": 1.0,
+    "by_ability.Emotion: Hidden emotions": 0.75,
+    "by_ability.Desire: Desires influence on emotions (beliefs)": 0.0,
+    "by_ability.Non-Literal Communication: Involuntary lies": 1.0,
+    "by_ability.Emotion: Emotion regulation": 0.0,
+    "by_ability.Desire: Desire-action contradiction": 1.0,
+    "by_ability.Non-literal communication: White lies": 1.0,
+    "by_ability.Intention: Discrepant intentions": 1.0,
+    "by_ability.Emotion: Typical emotional reactions": 0.0,
+    "by_ability.Desire: Discrepant desires": 0.0,
+    "by_ability": {
+      "Knowledge: Information-knowledge links": 1.0,
+      "Non-Literal Communication: Faux pas": 0.7142857142857143,
+      "Belief: Content false beliefs Belief: Second-order beliefs": 1.0,
+      "Non-literal communication: White lies": 1.0,
+      "Desire: Desires influence on actions": 1.0,
+      "Emotion: Emotion regulation": 0.0,
+      "Desire: Desire-action contradiction": 1.0,
+      "Belief: Location false beliefs Belief: Second-order beliefs": 1.0,
+      "Knowledge: Knowledge-pretend play links": 0.3333333333333333,
+      "Non-Literal Communication: Involuntary lies": 1.0,
+      "Emotion: Mixed emotions": 0.0,
+      "Non-literal communication: Humor": 1.0,
+      "Belief: Sequence false beliefs": 0.8571428571428571,
+      "Belief: Beliefs based action/emotions": 0.5,
+      "Intention: Discrepant intentions": 1.0,
+      "Emotion: Hidden emotions": 0.75,
+      "Desire: Desires influence on emotions (beliefs)": 0.0,
+      "Desire: Discrepant desires": 0.0,
+      "Belief: Identity false beliefs": 0.0,
+      "Intention: Intentions explanations": 0.8888888888888888,
+      "Emotion: Atypical emotional reactions": 0.16666666666666666,
+      "Emotion: Typical emotional reactions": 0.0,
+      "Belief: Content false beliefs": 0.6666666666666666,
+      "Belief: Location false beliefs": 1.0
+    },
+    "ability_counts": {
+      "Knowledge: Information-knowledge links": 1.0,
+      "Non-Literal Communication: Faux pas": 21.0,
+      "Belief: Content false beliefs Belief: Second-order beliefs": 5.0,
+      "Non-literal communication: White lies": 1.0,
+      "Desire: Desires influence on actions": 2.0,
+      "Emotion: Emotion regulation": 2.0,
+      "Desire: Desire-action contradiction": 2.0,
+      "Belief: Location false beliefs Belief: Second-order beliefs": 1.0,
+      "Knowledge: Knowledge-pretend play links": 3.0,
+      "Non-Literal Communication: Involuntary lies": 2.0,
+      "Emotion: Mixed emotions": 2.0,
+      "Non-literal communication: Humor": 2.0,
+      "Belief: Sequence false beliefs": 7.0,
+      "Belief: Beliefs based action/emotions": 4.0,
+      "Intention: Discrepant intentions": 2.0,
+      "Emotion: Hidden emotions": 4.0,
+      "Desire: Desires influence on emotions (beliefs)": 2.0,
+      "Desire: Discrepant desires": 1.0,
+      "Belief: Identity false beliefs": 1.0,
+      "Intention: Intentions explanations": 9.0,
+      "Emotion: Atypical emotional reactions": 6.0,
+      "Emotion: Typical emotional reactions": 1.0,
+      "Belief: Content false beliefs": 9.0,
+      "Belief: Location false beliefs": 10.0
+    }
+  },
+  "all_metrics": [
+    {
+      "accuracy": 0.7,
+      "correct": 70,
+      "total": 100,
+      "by_ability.Emotion: Atypical emotional reactions": 0.16666666666666666,
+      "by_ability.Belief: Location false beliefs": 1.0,
+      "by_ability.Intention: Intentions explanations": 0.8888888888888888,
+      "by_ability.Non-Literal Communication: Faux pas": 0.7142857142857143,
+      "by_ability.Belief: Content false beliefs Belief: Second-order beliefs": 1.0,
+      "by_ability.Belief: Sequence false beliefs": 0.8571428571428571,
+      "by_ability.Emotion: Mixed emotions": 0.0,
+      "by_ability.Belief: Location false beliefs Belief: Second-order beliefs": 1.0,
+      "by_ability.Non-literal communication: Humor": 1.0,
+      "by_ability.Knowledge: Knowledge-pretend play links": 0.3333333333333333,
+      "by_ability.Belief: Content false beliefs": 0.6666666666666666,
+      "by_ability.Knowledge: Information-knowledge links": 1.0,
+      "by_ability.Belief: Identity false beliefs": 0.0,
+      "by_ability.Belief: Beliefs based action/emotions": 0.5,
+      "by_ability.Desire: Desires influence on actions": 1.0,
+      "by_ability.Emotion: Hidden emotions": 0.75,
+      "by_ability.Desire: Desires influence on emotions (beliefs)": 0.0,
+      "by_ability.Non-Literal Communication: Involuntary lies": 1.0,
+      "by_ability.Emotion: Emotion regulation": 0.0,
+      "by_ability.Desire: Desire-action contradiction": 1.0,
+      "by_ability.Non-literal communication: White lies": 1.0,
+      "by_ability.Intention: Discrepant intentions": 1.0,
+      "by_ability.Emotion: Typical emotional reactions": 0.0,
+      "by_ability.Desire: Discrepant desires": 0.0,
+      "by_ability": {
+        "Emotion: Atypical emotional reactions": 0.16666666666666666,
+        "Belief: Location false beliefs": 1.0,
+        "Intention: Intentions explanations": 0.8888888888888888,
+        "Non-Literal Communication: Faux pas": 0.7142857142857143,
+        "Belief: Content false beliefs Belief: Second-order beliefs": 1.0,
+        "Belief: Sequence false beliefs": 0.8571428571428571,
+        "Emotion: Mixed emotions": 0.0,
+        "Belief: Location false beliefs Belief: Second-order beliefs": 1.0,
+        "Non-literal communication: Humor": 1.0,
+        "Knowledge: Knowledge-pretend play links": 0.3333333333333333,
+        "Belief: Content false beliefs": 0.6666666666666666,
+        "Knowledge: Information-knowledge links": 1.0,
+        "Belief: Identity false beliefs": 0.0,
+        "Belief: Beliefs based action/emotions": 0.5,
+        "Desire: Desires influence on actions": 1.0,
+        "Emotion: Hidden emotions": 0.75,
+        "Desire: Desires influence on emotions (beliefs)": 0.0,
+        "Non-Literal Communication: Involuntary lies": 1.0,
+        "Emotion: Emotion regulation": 0.0,
+        "Desire: Desire-action contradiction": 1.0,
+        "Non-literal communication: White lies": 1.0,
+        "Intention: Discrepant intentions": 1.0,
+        "Emotion: Typical emotional reactions": 0.0,
+        "Desire: Discrepant desires": 0.0
+      },
+      "ability_counts": {
+        "Emotion: Atypical emotional reactions": 6,
+        "Belief: Location false beliefs": 10,
+        "Intention: Intentions explanations": 9,
+        "Non-Literal Communication: Faux pas": 21,
+        "Belief: Content false beliefs Belief: Second-order beliefs": 5,
+        "Belief: Sequence false beliefs": 7,
+        "Emotion: Mixed emotions": 2,
+        "Belief: Location false beliefs Belief: Second-order beliefs": 1,
+        "Non-literal communication: Humor": 2,
+        "Knowledge: Knowledge-pretend play links": 3,
+        "Belief: Content false beliefs": 9,
+        "Knowledge: Information-knowledge links": 1,
+        "Belief: Identity false beliefs": 1,
+        "Belief: Beliefs based action/emotions": 4,
+        "Desire: Desires influence on actions": 2,
+        "Emotion: Hidden emotions": 4,
+        "Desire: Desires influence on emotions (beliefs)": 2,
+        "Non-Literal Communication: Involuntary lies": 2,
+        "Emotion: Emotion regulation": 2,
+        "Desire: Desire-action contradiction": 2,
+        "Non-literal communication: White lies": 1,
+        "Intention: Discrepant intentions": 2,
+        "Emotion: Typical emotional reactions": 1,
+        "Desire: Discrepant desires": 1
+      },
+      "per_sample_results": [
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": false,
+          "error_reason": "wrong_answer"
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        },
+        {
+          "is_correct": true,
+          "error_reason": null
+        }
+      ]
+    }
+  ]
+}

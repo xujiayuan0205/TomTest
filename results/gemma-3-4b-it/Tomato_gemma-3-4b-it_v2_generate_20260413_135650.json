@@ -1,0 +1,125 @@
+{
+  "dataset": "Tomato",
+  "model": "gemma-3-4b-it",
+  "prompt_method": "v2_generate",
+  "repeats": 3,
+  "avg_metrics": {
+    "accuracy": 0.5616861075109548,
+    "correct": 3033.6666666666665,
+    "total": 5401.0,
+    "by_dimension_1.belief": 0.5335136759843704,
+    "by_dimension_1.desire": 0.5964227642276422,
+    "by_dimension_1.emotion": 0.5692771084337349,
+    "by_dimension_1.intention": 0.554954954954955,
+    "by_dimension_1.knowledge": 0.5578524260694803,
+    "by_dimension_2.first_order": 0.5886895864474341,
+    "by_dimension_2.second_order": 0.5351681957186544,
+    "by_dimension_3.__none__": 0.5838955386289446,
+    "by_dimension_3.false_belief": 0.435070306038048,
+    "dimension_1_counts": {
+      "desire": 1025.0,
+      "intention": 1110.0,
+      "knowledge": 1161.0,
+      "emotion": 996.0,
+      "belief": 1109.0
+    },
+    "dimension_2_counts": {
+      "second_order": 2725.0,
+      "first_order": 2676.0
+    },
+    "dimension_3_counts": {
+      "__none__": 4595.0,
+      "false_belief": 806.0
+    }
+  },
+  "all_metrics": [
+    {
+      "accuracy": 0.5634141825587854,
+      "correct": 3043,
+      "total": 5401,
+      "by_dimension_1.belief": 0.5175834084761046,
+      "by_dimension_1.desire": 0.6029268292682927,
+      "by_dimension_1.emotion": 0.5813253012048193,
+      "by_dimension_1.intention": 0.5585585585585585,
+      "by_dimension_1.knowledge": 0.5615848406546081,
+      "by_dimension_2.first_order": 0.5915545590433483,
+      "by_dimension_2.second_order": 0.5357798165137615,
+      "by_dimension_3.__none__": 0.5880304678998912,
+      "by_dimension_3.false_belief": 0.4230769230769231,
+      "dimension_1_counts": {
+        "belief": 1109,
+        "desire": 1025,
+        "emotion": 996,
+        "intention": 1110,
+        "knowledge": 1161
+      },
+      "dimension_2_counts": {
+        "first_order": 2676,
+        "second_order": 2725
+      },
+      "dimension_3_counts": {
+        "__none__": 4595,
+        "false_belief": 806
+      }
+    },
+    {
+      "accuracy": 0.5595260137011665,
+      "correct": 3022,
+      "total": 5401,
+      "by_dimension_1.belief": 0.5410279531109107,
+      "by_dimension_1.desire": 0.5834146341463414,
+      "by_dimension_1.emotion": 0.5572289156626506,
+      "by_dimension_1.intention": 0.5558558558558558,
+      "by_dimension_1.knowledge": 0.5615848406546081,
+      "by_dimension_2.first_order": 0.5870702541106129,
+      "by_dimension_2.second_order": 0.5324770642201835,
+      "by_dimension_3.__none__": 0.5808487486398259,
+      "by_dimension_3.false_belief": 0.43796526054590573,
+      "dimension_1_counts": {
+        "belief": 1109,
+        "desire": 1025,
+        "emotion": 996,
+        "intention": 1110,
+        "knowledge": 1161
+      },
+      "dimension_2_counts": {
+        "first_order": 2676,
+        "second_order": 2725
+      },
+      "dimension_3_counts": {
+        "__none__": 4595,
+        "false_belief": 806
+      }
+    },
+    {
+      "accuracy": 0.5621181262729125,
+      "correct": 3036,
+      "total": 5401,
+      "by_dimension_1.belief": 0.5419296663660956,
+      "by_dimension_1.desire": 0.6029268292682927,
+      "by_dimension_1.emotion": 0.5692771084337349,
+      "by_dimension_1.intention": 0.5504504504504505,
+      "by_dimension_1.knowledge": 0.5503875968992248,
+      "by_dimension_2.first_order": 0.5874439461883408,
+      "by_dimension_2.second_order": 0.5372477064220184,
+      "by_dimension_3.__none__": 0.5828073993471165,
+      "by_dimension_3.false_belief": 0.4441687344913151,
+      "dimension_1_counts": {
+        "belief": 1109,
+        "desire": 1025,
+        "emotion": 996,
+        "intention": 1110,
+        "knowledge": 1161
+      },
+      "dimension_2_counts": {
+        "first_order": 2676,
+        "second_order": 2725
+      },
+      "dimension_3_counts": {
+        "__none__": 4595,
+        "false_belief": 806
+      }
+    }
+  ],
+  "timestamp": "20260413_135650"
+}

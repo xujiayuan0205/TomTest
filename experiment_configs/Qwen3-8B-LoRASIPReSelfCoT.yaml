@@ -1,0 +1,33 @@
+llm:
+  model_name: Qwen3-8B-LoRASIPReSelfCoT
+  api_key: EMPTY
+  api_url: http://10.208.62.38:31674/v1
+  temperature: 0.6
+  max_tokens: 8192
+  max_workers: 64
+  enable_thinking: true
+
+judge:
+  model_name: Qwen3-8B-LoRASIPReSelfCoT
+  api_key: EMPTY
+  api_url: http://10.208.62.38:31674/v1
+  temperature: 0.0
+  max_tokens: 4096
+  system_prompt: ""
+  enable_thinking: false
+  use_llm_judge: true
+
+badcase:
+  enabled: true
+
+evaluation:
+  prompt_profile: cot_tags_v1
+  extraction_profile: cot_tags_v1
+  overrides:
+    ToMi:
+      prompt_profile: cot_tags_tomi_v1
+
+repeats: 3
+max_samples: 0
+datasets_path: datasets
+results_path: results/Qwen3-8B-LoRASIPReSelfCoT
